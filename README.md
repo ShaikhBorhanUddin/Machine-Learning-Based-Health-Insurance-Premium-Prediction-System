@@ -8,8 +8,22 @@
 
 ## Feature Engineering 
 
+## Exploratory Data Analysis 
+
 ## Model Training 
 
 ## Results 
+
+## Practical Applications 
+
+## Deployment 
+
+## Limitations 
+
+## Tools Used 
+
+## Licence 
+
+## Contact 
 
 
