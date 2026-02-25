@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Insurance Premium Prediction</title>
+</head>
+<body>
+
+    <h1>Health Insurance Premium Estimator</h1>
+
+    <form method="POST">
+        {% for feature in feature_names %}
+            <label for="{{ feature }}">{{ feature.replace('_', ' ').title() }}</label><br>
+            <input
+                type="number"
+                step="any"
+                name="{{ feature }}"
+                id="{{ feature }}"
+                required
+            ><br><br>
+        {% endfor %}
+
+        <button type="submit">Predict Annual Premium</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Estimated Annual Premium: ${{ prediction }}</h2>
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red;">Error: {{ error }}</p>
+    {% endif %}
+
+</body>
+</html>
