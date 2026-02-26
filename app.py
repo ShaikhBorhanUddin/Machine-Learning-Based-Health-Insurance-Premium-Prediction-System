@@ -5,8 +5,8 @@ import os
 from sklearn.preprocessing import OneHotEncoder
 
 # ------------------ CONFIG ------------------ #
-MODEL_PATH = "Models/xgboost_model_cpu.pkl"
-ENCODER_PATH = "Models/ohe_encoder.pkl"  # saved encoder for consistent OHE
+MODEL_PATH = "/content/drive/MyDrive/Medical_Insurance_Prediction_Project/xgboost_model_cpu.pkl"
+ENCODER_PATH = "/content/drive/MyDrive/Medical_Insurance_Prediction_Project/ohe_encoder.pkl"  # saved encoder for consistent OHE
 
 st.set_page_config(
     page_title="Medical Insurance Premium Predictor",
@@ -24,7 +24,7 @@ def load_model(path):
         model = joblib.load(path)
         # Force CPU if raw XGBRegressor
         try:
-            model.set_params(predictor="cpu_predictor", tree_method="hist")
+            model.named_steps['regressor'].set_params(predictor="cpu_predictor", tree_method="hist")
         except Exception:
             pass
         return model
@@ -124,6 +124,7 @@ if st.button("Predict Annual Premium"):
         if os.path.exists(ENCODER_PATH):
             ohe = joblib.load(ENCODER_PATH)
         else:
+            # This case should ideally not happen if the encoder is pre-saved
             ohe = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
             ohe.fit(input_df[cat_features])
             joblib.dump(ohe, ENCODER_PATH)
@@ -143,12 +144,26 @@ if st.button("Predict Annual Premium"):
                 final_input[col] = pd.to_numeric(final_input[col], errors='coerce')
         final_input = final_input.fillna(0)
 
-        # Align columns with training
-        if hasattr(model, 'feature_names_in_'):
-            missing_cols = set(model.feature_names_in_) - set(final_input.columns)
-            for col in missing_cols:
-                final_input[col] = 0
-            final_input = final_input[model.feature_names_in_]
+        # Align columns with training data used for model training
+        # This is crucial if the model's preprocessor has specific column order/names
+        # The model variable is a Pipeline, so we need to access its preprocessor's feature names
+        preprocessor_step = model.named_steps['preprocessor']
+        # For OneHotEncoder, get feature names from it
+        ohe_feature_names = preprocessor_step.named_transformers_['cat'].get_feature_names_out(cat_features)
+        # For numerical features, these are typically passed through
+        numerical_feature_names = preprocessor_step.named_transformers_['num'].get_feature_names_out()
+        
+        expected_features = list(numerical_feature_names) + list(ohe_feature_names)
+
+        missing_cols = set(expected_features) - set(final_input.columns)
+        for col in missing_cols:
+            final_input[col] = 0
+        
+        extra_cols = set(final_input.columns) - set(expected_features)
+        final_input = final_input.drop(columns=list(extra_cols))
+
+        final_input = final_input[expected_features]
+
 
         # ----------------- PREDICTION ----------------- #
         prediction = model.predict(final_input)[0]
