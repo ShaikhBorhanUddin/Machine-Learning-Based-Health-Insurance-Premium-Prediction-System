@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 # ------------------ CONFIG ------------------ #
-MODEL_PATH = "Models/xgboost_model.pkl"
+MODEL_PATH = "Models/xgboost_model_cpu.pkl"
 
 st.set_page_config(
     page_title="Medical Insurance Premium Predictor",
@@ -131,6 +131,7 @@ if st.button("Predict Annual Premium"):
 # ------------------ FOOTER ------------------ #
 st.markdown("---")
 st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
+
 
 
 
