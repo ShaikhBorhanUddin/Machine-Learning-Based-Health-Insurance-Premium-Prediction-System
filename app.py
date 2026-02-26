@@ -28,7 +28,7 @@ if model is None:
 
 # 🔥 FORCE XGBoost to CPU (important for Streamlit Cloud deployment)
 try:
-    model.named_steps["xgboost"].set_params(
+    model.named_steps["xgboost_model"].set_params(
         predictor="cpu_predictor",
         tree_method="hist"
     )
@@ -132,5 +132,6 @@ if st.button("Predict Annual Premium"):
 # ------------------ FOOTER ------------------ #
 st.markdown("---")
 st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
+
 
 
