@@ -1,9 +1,12 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
+from sklearn.preprocessing import OneHotEncoder
 
 # ------------------ CONFIG ------------------ #
 MODEL_PATH = "Models/xgboost_model_cpu.pkl"
+ENCODER_PATH = "Models/ohe_encoder.pkl"  # optional: if you saved encoder separately
 
 st.set_page_config(
     page_title="Medical Insurance Premium Predictor",
@@ -13,19 +16,26 @@ st.set_page_config(
 
 # ------------------ LOAD MODEL ------------------ #
 @st.cache_resource
-def load_model():
+def load_model(path):
+    if not os.path.exists(path):
+        st.error(f"❌ Model file not found at {path}")
+        return None
     try:
-        model = joblib.load(MODEL_PATH)
+        model = joblib.load(path)
+        # Force CPU for XGBoost if raw XGBRegressor
+        try:
+            model.set_params(predictor="cpu_predictor", tree_method="hist")
+        except Exception:
+            pass
         return model
     except Exception as e:
         st.error(f"❌ Error loading model: {e}")
         return None
 
-model = load_model()
-
+model = load_model(MODEL_PATH)
 if model is None:
     st.stop()
-    
+
 # ------------------ CATEGORIES ------------------ #
 categories = {
     'sex': ['Female', 'Male', 'Other'],
@@ -56,7 +66,6 @@ st.title("🏥 Medical Insurance Premium Predictor")
 st.markdown("Enter patient details to estimate the **annual insurance premium**.")
 
 st.sidebar.header("Patient Information")
-
 user_input = {}
 
 # -------- Demographics -------- #
@@ -107,14 +116,43 @@ if st.button("Predict Annual Premium"):
     try:
         input_df = pd.DataFrame([user_input])
 
-        prediction = model.predict(input_df)[0]
+        # ----------------- ONE-HOT ENCODING ----------------- #
+        # Identify categorical features
+        cat_features = ['sex','region','urban_rural','education','marital_status',
+                        'employment_status','smoker','alcohol_freq','plan_type','network_tier']
+
+        # Load saved encoder if exists, else create a new one
+        if os.path.exists(ENCODER_PATH):
+            ohe = joblib.load(ENCODER_PATH)
+        else:
+            ohe = OneHotEncoder(handle_unknown='ignore', sparse=False)
+            ohe.fit(input_df[cat_features])
+            joblib.dump(ohe, ENCODER_PATH)
+
+        # Transform categorical features
+        cat_encoded = pd.DataFrame(ohe.transform(input_df[cat_features]),
+                                   columns=ohe.get_feature_names_out(cat_features))
+
+        # Combine with numerical + boolean features
+        num_bool_features = [col for col in input_df.columns if col not in cat_features]
+        final_input = pd.concat([input_df[num_bool_features].reset_index(drop=True),
+                                 cat_encoded.reset_index(drop=True)], axis=1)
+
+        # Ensure columns match training (optional: save training columns during model training)
+        if hasattr(model, 'feature_names_in_'):
+            missing_cols = set(model.feature_names_in_) - set(final_input.columns)
+            for col in missing_cols:
+                final_input[col] = 0
+            final_input = final_input[model.feature_names_in_]
+
+        # Prediction
+        prediction = model.predict(final_input)[0]
 
         st.success(f"💰 Predicted Annual Premium: **${prediction:,.2f}**")
         st.balloons()
 
-        # Optional: show input summary
         with st.expander("🔎 View Input Summary"):
-            st.dataframe(input_df)
+            st.dataframe(final_input)
 
     except Exception as e:
         st.error("❌ Prediction failed")
@@ -123,9 +161,3 @@ if st.button("Predict Annual Premium"):
 # ------------------ FOOTER ------------------ #
 st.markdown("---")
 st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
-
-
-
-
-
-
