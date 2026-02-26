@@ -125,7 +125,7 @@ if st.button("Predict Annual Premium"):
         if os.path.exists(ENCODER_PATH):
             ohe = joblib.load(ENCODER_PATH)
         else:
-            ohe = OneHotEncoder(handle_unknown='ignore', sparse=False)
+            ohe = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
             ohe.fit(input_df[cat_features])
             joblib.dump(ohe, ENCODER_PATH)
 
@@ -161,3 +161,4 @@ if st.button("Predict Annual Premium"):
 # ------------------ FOOTER ------------------ #
 st.markdown("---")
 st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
+
