@@ -26,6 +26,15 @@ model = load_model()
 if model is None:
     st.stop()
 
+# 🔥 FORCE XGBoost to CPU (important for Streamlit Cloud deployment)
+try:
+    model.named_steps["xgboost"].set_params(
+        predictor="cpu_predictor",
+        tree_method="hist"
+    )
+except Exception as e:
+    st.warning(f"⚠️ Could not force CPU mode: {e}")
+    
 # ------------------ CATEGORIES ------------------ #
 categories = {
     'sex': ['Female', 'Male', 'Other'],
@@ -123,4 +132,5 @@ if st.button("Predict Annual Premium"):
 # ------------------ FOOTER ------------------ #
 st.markdown("---")
 st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
+
 
