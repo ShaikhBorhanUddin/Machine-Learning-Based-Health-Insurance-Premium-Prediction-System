@@ -1,12 +1,9 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import os
-from sklearn.preprocessing import OneHotEncoder
 
 # ------------------ CONFIG ------------------ #
 MODEL_PATH = "Models/xgboost_model_cpu.pkl"
-ENCODER_PATH = "Models/ohe_encoder.pkl"  # saved encoder for consistent OHE
 
 st.set_page_config(
     page_title="Medical Insurance Premium Predictor",
@@ -16,26 +13,27 @@ st.set_page_config(
 
 # ------------------ LOAD MODEL ------------------ #
 @st.cache_resource
-def load_model(path):
-    if not os.path.exists(path):
-        st.error(f"❌ Model file not found at {path}")
-        return None
+def load_model():
     try:
-        model = joblib.load(path)
-        # Force CPU if raw XGBRegressor
-        try:
-            model.named_steps['regressor'].set_params(predictor="cpu_predictor", tree_method="hist")
-        except Exception:
-            pass
+        model = joblib.load(MODEL_PATH)
         return model
     except Exception as e:
         st.error(f"❌ Error loading model: {e}")
         return None
 
-model = load_model(MODEL_PATH)
+model = load_model()
+
 if model is None:
     st.stop()
 
+# 🔥 FORCE XGBoost to CPU (important for Streamlit Cloud deployment)
+try:
+    model.named_steps["xgboost_model"].set_params(
+        predictor="cpu_predictor",
+        tree_method="hist"
+    )
+except Exception:
+    pass
 # ------------------ CATEGORIES ------------------ #
 categories = {
     'sex': ['Female', 'Male', 'Other'],
@@ -66,6 +64,7 @@ st.title("🏥 Medical Insurance Premium Predictor")
 st.markdown("Enter patient details to estimate the **annual insurance premium**.")
 
 st.sidebar.header("Patient Information")
+
 user_input = {}
 
 # -------- Demographics -------- #
@@ -116,63 +115,14 @@ if st.button("Predict Annual Premium"):
     try:
         input_df = pd.DataFrame([user_input])
 
-        # ----------------- ONE-HOT ENCODING ----------------- #
-        cat_features = ['sex','region','urban_rural','education','marital_status',
-                        'employment_status','smoker','alcohol_freq','plan_type','network_tier']
-
-        # Load saved encoder or create new one
-        if os.path.exists(ENCODER_PATH):
-            ohe = joblib.load(ENCODER_PATH)
-        else:
-            # This case should ideally not happen if the encoder is pre-saved
-            ohe = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
-            ohe.fit(input_df[cat_features])
-            joblib.dump(ohe, ENCODER_PATH)
-
-        # Transform categorical features
-        cat_encoded = pd.DataFrame(ohe.transform(input_df[cat_features]),
-                                   columns=ohe.get_feature_names_out(cat_features))
-
-        # Combine with numeric + boolean
-        num_bool_features = [col for col in input_df.columns if col not in cat_features]
-        final_input = pd.concat([input_df[num_bool_features].reset_index(drop=True),
-                                 cat_encoded.reset_index(drop=True)], axis=1)
-
-        # ⚡ Force numeric types
-        for col in final_input.columns:
-            if final_input[col].dtype == 'object':
-                final_input[col] = pd.to_numeric(final_input[col], errors='coerce')
-        final_input = final_input.fillna(0)
-
-        # Align columns with training data used for model training
-        # This is crucial if the model's preprocessor has specific column order/names
-        # The model variable is a Pipeline, so we need to access its preprocessor's feature names
-        preprocessor_step = model.named_steps['preprocessor']
-        # For OneHotEncoder, get feature names from it
-        ohe_feature_names = preprocessor_step.named_transformers_['cat'].get_feature_names_out(cat_features)
-        # For numerical features, these are typically passed through
-        numerical_feature_names = preprocessor_step.named_transformers_['num'].get_feature_names_out()
-        
-        expected_features = list(numerical_feature_names) + list(ohe_feature_names)
-
-        missing_cols = set(expected_features) - set(final_input.columns)
-        for col in missing_cols:
-            final_input[col] = 0
-        
-        extra_cols = set(final_input.columns) - set(expected_features)
-        final_input = final_input.drop(columns=list(extra_cols))
-
-        final_input = final_input[expected_features]
-
-
-        # ----------------- PREDICTION ----------------- #
-        prediction = model.predict(final_input)[0]
+        prediction = model.predict(input_df)[0]
 
         st.success(f"💰 Predicted Annual Premium: **${prediction:,.2f}**")
         st.balloons()
 
+        # Optional: show input summary
         with st.expander("🔎 View Input Summary"):
-            st.dataframe(final_input)
+            st.dataframe(input_df)
 
     except Exception as e:
         st.error("❌ Prediction failed")
@@ -181,4 +131,7 @@ if st.button("Predict Annual Premium"):
 # ------------------ FOOTER ------------------ #
 st.markdown("---")
 st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
+
+
+
 
