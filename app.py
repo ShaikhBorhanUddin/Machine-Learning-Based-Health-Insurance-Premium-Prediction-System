@@ -6,7 +6,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 # ------------------ CONFIG ------------------ #
 MODEL_PATH = "Models/xgboost_model_cpu.pkl"
-ENCODER_PATH = "Models/ohe_encoder.pkl"  # optional: if you saved encoder separately
+ENCODER_PATH = "Models/ohe_encoder.pkl"  # saved encoder for consistent OHE
 
 st.set_page_config(
     page_title="Medical Insurance Premium Predictor",
@@ -22,7 +22,7 @@ def load_model(path):
         return None
     try:
         model = joblib.load(path)
-        # Force CPU for XGBoost if raw XGBRegressor
+        # Force CPU if raw XGBRegressor
         try:
             model.set_params(predictor="cpu_predictor", tree_method="hist")
         except Exception:
@@ -117,11 +117,10 @@ if st.button("Predict Annual Premium"):
         input_df = pd.DataFrame([user_input])
 
         # ----------------- ONE-HOT ENCODING ----------------- #
-        # Identify categorical features
         cat_features = ['sex','region','urban_rural','education','marital_status',
                         'employment_status','smoker','alcohol_freq','plan_type','network_tier']
 
-        # Load saved encoder if exists, else create a new one
+        # Load saved encoder or create new one
         if os.path.exists(ENCODER_PATH):
             ohe = joblib.load(ENCODER_PATH)
         else:
@@ -133,19 +132,25 @@ if st.button("Predict Annual Premium"):
         cat_encoded = pd.DataFrame(ohe.transform(input_df[cat_features]),
                                    columns=ohe.get_feature_names_out(cat_features))
 
-        # Combine with numerical + boolean features
+        # Combine with numeric + boolean
         num_bool_features = [col for col in input_df.columns if col not in cat_features]
         final_input = pd.concat([input_df[num_bool_features].reset_index(drop=True),
                                  cat_encoded.reset_index(drop=True)], axis=1)
 
-        # Ensure columns match training (optional: save training columns during model training)
+        # ⚡ Force numeric types
+        for col in final_input.columns:
+            if final_input[col].dtype == 'object':
+                final_input[col] = pd.to_numeric(final_input[col], errors='coerce')
+        final_input = final_input.fillna(0)
+
+        # Align columns with training
         if hasattr(model, 'feature_names_in_'):
             missing_cols = set(model.feature_names_in_) - set(final_input.columns)
             for col in missing_cols:
                 final_input[col] = 0
             final_input = final_input[model.feature_names_in_]
 
-        # Prediction
+        # ----------------- PREDICTION ----------------- #
         prediction = model.predict(final_input)[0]
 
         st.success(f"💰 Predicted Annual Premium: **${prediction:,.2f}**")
@@ -161,4 +166,3 @@ if st.button("Predict Annual Premium"):
 # ------------------ FOOTER ------------------ #
 st.markdown("---")
 st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
-
