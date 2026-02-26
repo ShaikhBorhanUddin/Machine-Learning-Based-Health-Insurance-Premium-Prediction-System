@@ -5,8 +5,8 @@ import os
 from sklearn.preprocessing import OneHotEncoder
 
 # ------------------ CONFIG ------------------ #
-MODEL_PATH = "/content/drive/MyDrive/Medical_Insurance_Prediction_Project/xgboost_model_cpu.pkl"
-ENCODER_PATH = "/content/drive/MyDrive/Medical_Insurance_Prediction_Project/ohe_encoder.pkl"  # saved encoder for consistent OHE
+MODEL_PATH = "Models/xgboost_model_cpu.pkl"
+ENCODER_PATH = "Models/ohe_encoder.pkl"  # saved encoder for consistent OHE
 
 st.set_page_config(
     page_title="Medical Insurance Premium Predictor",
@@ -181,3 +181,4 @@ if st.button("Predict Annual Premium"):
 # ------------------ FOOTER ------------------ #
 st.markdown("---")
 st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
+
