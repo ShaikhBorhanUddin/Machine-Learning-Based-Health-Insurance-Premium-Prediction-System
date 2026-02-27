@@ -114,18 +114,4 @@ if st.button("Predict Annual Premium", type="primary"):
         st.error(f"An error occurred during prediction: {e}")
 
 st.markdown("---")
-st.markdown("Developed with Shaikh Borhan Uddin")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+st.markdown("Developed by Shaikh Borhan Uddin")
