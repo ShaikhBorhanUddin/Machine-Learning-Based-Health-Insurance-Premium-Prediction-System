@@ -1,137 +1,117 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import numpy as np
 
-# ------------------ CONFIG ------------------ #
-MODEL_PATH = "Models/xgboost_model_cpu.pkl"
-
-st.set_page_config(
-    page_title="Medical Insurance Premium Predictor",
-    layout="wide",
-    page_icon="🏥"
-)
-
-# ------------------ LOAD MODEL ------------------ #
-@st.cache_resource
-def load_model():
-    try:
-        model = joblib.load(MODEL_PATH)
-        return model
-    except Exception as e:
-        st.error(f"❌ Error loading model: {e}")
-        return None
-
-model = load_model()
-
-if model is None:
+# Load the trained model
+# Assuming the model file 'xgboost_model_cpu.pkl' is in the same directory as app.py
+try:
+    model = joblib.load('xgboost_model_cpu.pkl')
+except FileNotFoundError:
+    st.error("Model file 'xgboost_model_cpu.pkl' not found. Please ensure it's in the same directory as app.py.")
     st.stop()
 
-# 🔥 FORCE XGBoost to CPU (important for Streamlit Cloud deployment)
-try:
-    model.named_steps["xgboost_model"].set_params(
-        predictor="cpu_predictor",
-        tree_method="hist"
-    )
-except Exception:
-    pass
-# ------------------ CATEGORIES ------------------ #
-categories = {
-    'sex': ['Female', 'Male', 'Other'],
-    'region': ['North', 'Central', 'South', 'West', 'East'],
-    'urban_rural': ['Suburban', 'Urban', 'Rural'],
-    'education': ['Doctorate', 'High School Dropout', 'High School', 'College', 'Master', 'Bachelor'],
-    'marital_status': ['Married', 'Divorced', 'Single', 'Widowed'],
-    'employment_status': ['Retired', 'Employed', 'Self-employed', 'Unemployed'],
-    'smoker': ['Never', 'Former', 'Current'],
-    'alcohol_freq': ['Never', 'Weekly', 'Daily', 'Occasional'],
-    'plan_type': [
-        'Preferred Provider Organization',
-        'Point-of-Service',
-        'Health Maintenance Organization',
-        'Exclusive Provider Organization'
-    ],
-    'network_tier': ['Platinum', 'Gold', 'Silver', 'Bronze']
-}
+st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="centered")
+st.title("🏥 Medical Insurance Premium Prediction")
+st.markdown("Enter the details below to predict the annual medical insurance premium.")
 
-boolean_features = [
-    'hypertension', 'diabetes', 'asthma', 'copd', 'cardiovascular_disease',
-    'cancer_history', 'kidney_disease', 'liver_disease', 'arthritis',
-    'mental_health', 'had_major_procedure'
-]
+st.header("Personal Information")
+col1, col2 = st.columns(2)
+with col1:
+    age = st.number_input("Age", min_value=0, max_value=120, value=30)
+    sex = st.selectbox("Sex", options=['Female', 'Male'])
+    marital_status = st.selectbox("Marital Status", options=['Married', 'Divorced', 'Single', 'Widowed'])
+    household_size = st.number_input("Household Size", min_value=1, max_value=10, value=2)
+    dependents = st.number_input("Dependents", min_value=0, max_value=9, value=1)
+    education = st.selectbox("Education", options=['Doctorate', 'High School Dropout', 'High School', 'College', "Master's", "Bachelor's"])
+with col2:
+    income = st.number_input("Income", min_value=0.0, value=50000.0, format="%.2f")
+    employment_status = st.selectbox("Employment Status", options=['Retired', 'Employed', 'Self-employed', 'Unemployed', 'Student'])
+    region = st.selectbox("Region", options=['North', 'Central', 'West', 'East', 'South'])
+    urban_rural = st.selectbox("Urban/Rural", options=['Suburban', 'Urban', 'Rural'])
+    
+st.header("Health Metrics & Habits")
+col3, col4 = st.columns(2)
+with col3:
+    bmi = st.number_input("BMI", min_value=0.0, value=25.0, format="%.1f")
+    smoker = st.selectbox("Smoker", options=['Never', 'Former', 'Current'])
+    alcohol_freq = st.selectbox("Alcohol Frequency", options=['Never', 'Weekly', 'Daily', 'Occasional', 'Seldom'])
+    systolic_bp = st.number_input("Systolic BP", min_value=0.0, value=120.0, format="%.1f")
+    diastolic_bp = st.number_input("Diastolic BP", min_value=0.0, value=80.0, format="%.1f")
+with col4:
+    ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
+    hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
+    medication_count = st.number_input("Medication Count", min_value=0, max_value=10, value=1)
+    annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
 
-# ------------------ UI ------------------ #
-st.title("🏥 Medical Insurance Premium Predictor")
-st.markdown("Enter patient details to estimate the **annual insurance premium**.")
+st.header("Medical History & Policy Details")
+col5, col6 = st.columns(2)
+with col5:
+    visits_last_year = st.number_input("Visits Last Year", min_value=0, max_value=20, value=5)
+    hospitalizations_last_3yrs = st.number_input("Hospitalizations Last 3 Years", min_value=0, max_value=10, value=0)
+    days_hospitalized_last_3yrs = st.number_input("Days Hospitalized Last 3 Years", min_value=0, max_value=30, value=0)
+    hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    diabetes = st.selectbox("Diabetes", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    asthma = st.selectbox("Asthma", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    copd = st.selectbox("COPD", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    cardiovascular_disease = st.selectbox("Cardiovascular Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+with col6:
+    cancer_history = st.selectbox("Cancer History", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    kidney_disease = st.selectbox("Kidney Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    liver_disease = st.selectbox("Liver Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    arthritis = st.selectbox("Arthritis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    had_major_procedure = st.selectbox("Had Major Procedure", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    deductible = st.number_input("Deductible", min_value=0, max_value=5000, value=500)
+    copay = st.number_input("Copay", min_value=0, max_value=100, value=20)
+    policy_term_years = st.number_input("Policy Term (Years)", min_value=1, max_value=10, value=1)
+    plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization', 'High Deductible Health Plan'])
+    network_tier = st.selectbox("Network Tier", options=['Tier 1', 'Tier 2', 'Tier 3'])
 
-st.sidebar.header("Patient Information")
 
-user_input = {}
+if st.button("Predict Annual Premium", type="primary"):
+    # Create a DataFrame from inputs, ensuring correct column order and dtypes
+    input_data = pd.DataFrame([[age, sex, region, urban_rural, income, education, marital_status,
+                                employment_status, household_size, dependents, bmi, smoker,
+                                alcohol_freq, visits_last_year, hospitalizations_last_3yrs,
+                                days_hospitalized_last_3yrs, medication_count, systolic_bp,
+                                diastolic_bp, ldl, hba1c, plan_type, network_tier, deductible,
+                                copay, policy_term_years, annual_medical_cost, hypertension,
+                                diabetes, asthma, copd, cardiovascular_disease, cancer_history,
+                                kidney_disease, liver_disease, arthritis, mental_health,
+                                had_major_procedure]],
+                              columns=['age', 'sex', 'region', 'urban_rural', 'income', 'education',
+                                       'marital_status', 'employment_status', 'household_size',
+                                       'dependents', 'bmi', 'smoker', 'alcohol_freq',
+                                       'visits_last_year', 'hospitalizations_last_3yrs',
+                                       'days_hospitalized_last_3yrs', 'medication_count',
+                                       'systolic_bp', 'diastolic_bp', 'ldl', 'hba1c', 'plan_type',
+                                       'network_tier', 'deductible', 'copay', 'policy_term_years',
+                                       'annual_medical_cost', 'hypertension', 'diabetes', 'asthma',
+                                       'copd', 'cardiovascular_disease', 'cancer_history',
+                                       'kidney_disease', 'liver_disease', 'arthritis',
+                                       'mental_health', 'had_major_procedure'])
 
-# -------- Demographics -------- #
-st.sidebar.subheader("Demographics")
-user_input['age'] = st.sidebar.slider('Age', 15, 80, 30)
-user_input['sex'] = st.sidebar.selectbox('Sex', categories['sex'])
-user_input['region'] = st.sidebar.selectbox('Region', categories['region'])
-user_input['urban_rural'] = st.sidebar.selectbox('Urban/Rural', categories['urban_rural'])
-user_input['income'] = st.sidebar.number_input('Income ($)', 0.0, value=50000.0, step=100.0)
-user_input['education'] = st.sidebar.selectbox('Education Level', categories['education'], index=3)
-user_input['marital_status'] = st.sidebar.selectbox('Marital Status', categories['marital_status'])
-user_input['employment_status'] = st.sidebar.selectbox('Employment Status', categories['employment_status'], index=1)
-user_input['household_size'] = st.sidebar.slider('Household Size', 1, 10, 2)
-user_input['dependents'] = st.sidebar.slider('Number of Dependents', 0, 8, 0)
+    # Ensure dtypes are correct for prediction
+    for col in ['hypertension', 'diabetes', 'asthma', 'copd', 'cardiovascular_disease',
+                'cancer_history', 'kidney_disease', 'liver_disease', 'arthritis',
+                'mental_health', 'had_major_procedure']:
+        input_data[col] = input_data[col].astype(np.int64)
 
-# -------- Health Metrics -------- #
-st.sidebar.subheader("Health Metrics & Lifestyle")
-user_input['bmi'] = st.sidebar.slider('BMI', 15.0, 50.0, 25.0, 0.1)
-user_input['smoker'] = st.sidebar.selectbox('Smoker Status', categories['smoker'])
-user_input['alcohol_freq'] = st.sidebar.selectbox('Alcohol Frequency', categories['alcohol_freq'])
-user_input['systolic_bp'] = st.sidebar.number_input('Systolic BP (mmHg)', 80.0, 200.0, 120.0)
-user_input['diastolic_bp'] = st.sidebar.number_input('Diastolic BP (mmHg)', 40.0, 120.0, 80.0)
-user_input['ldl'] = st.sidebar.number_input('LDL Cholesterol (mg/dL)', 50.0, 300.0, 100.0)
-user_input['hba1c'] = st.sidebar.number_input('HbA1c (%)', 4.0, 15.0, 5.5)
+    for col in ['age', 'household_size', 'dependents', 'visits_last_year', 
+                'hospitalizations_last_3yrs', 'days_hospitalized_last_3yrs', 
+                'medication_count', 'deductible', 'copay', 'policy_term_years']:
+        input_data[col] = pd.to_numeric(input_data[col], errors='coerce').astype(np.int64)
 
-# -------- Medical Utilization -------- #
-st.sidebar.subheader("Medical History & Plan")
-user_input['visits_last_year'] = st.sidebar.slider('Doctor Visits Last Year', 0, 15, 2)
-user_input['hospitalizations_last_3yrs'] = st.sidebar.slider('Hospitalizations Last 3 Years', 0, 10, 0)
-user_input['days_hospitalized_last_3yrs'] = st.sidebar.slider('Days Hospitalized Last 3 Years', 0, 30, 0)
-user_input['medication_count'] = st.sidebar.slider('Number of Medications', 0, 10, 1)
-user_input['annual_medical_cost'] = st.sidebar.number_input('Annual Medical Cost ($)', 0.0, 100000.0, 1000.0, step=100.0)
-user_input['deductible'] = st.sidebar.number_input('Deductible ($)', 0.0, 10000.0, 500.0, step=50.0)
-user_input['copay'] = st.sidebar.number_input('Co-pay ($)', 0.0, 500.0, 20.0, step=5.0)
-user_input['policy_term_years'] = st.sidebar.slider('Policy Term (Years)', 1, 10, 1)
-user_input['plan_type'] = st.sidebar.selectbox('Plan Type', categories['plan_type'])
-user_input['network_tier'] = st.sidebar.selectbox('Network Tier', categories['network_tier'])
+    for col in ['income', 'bmi', 'systolic_bp', 'diastolic_bp', 'ldl', 
+                'hba1c', 'annual_medical_cost']:
+        input_data[col] = pd.to_numeric(input_data[col], errors='coerce').astype(np.float64)
 
-# -------- Conditions -------- #
-st.sidebar.subheader("Pre-existing Conditions")
-for feature in boolean_features:
-    user_input[feature] = int(
-        st.sidebar.checkbox(feature.replace('_', ' ').title(), value=False)
-    )
-
-# ------------------ PREDICTION ------------------ #
-if st.button("Predict Annual Premium"):
     try:
-        input_df = pd.DataFrame([user_input])
-
-        prediction = model.predict(input_df)[0]
-
-        st.success(f"💰 Predicted Annual Premium: **${prediction:,.2f}**")
-        st.balloons()
-
-        # Optional: show input summary
-        with st.expander("🔎 View Input Summary"):
-            st.dataframe(input_df)
-
+        prediction = model.predict(input_data)[0]
+        st.success(f"Predicted Annual Premium: **${prediction:.2f}**")
     except Exception as e:
-        st.error("❌ Prediction failed")
-        st.exception(e)
+        st.error(f"An error occurred during prediction: {e}")
 
-# ------------------ FOOTER ------------------ #
 st.markdown("---")
-st.caption("⚠️ This tool provides an estimate only and is not medical or financial advice.")
-
-
-
-
+st.markdown("Developed with ❤️ by Your Name/Team")
