@@ -23,7 +23,7 @@ with col1:
     marital_status = st.selectbox("Marital Status", options=['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.number_input("Household Size", min_value=1, max_value=10, value=2)
     dependents = st.number_input("Dependents", min_value=0, max_value=9, value=1)
-    education = st.selectbox("Education", options=['Doctorate', 'High School Dropout', 'High School', 'College', "Master's", "Bachelor's"])
+    education = st.selectbox("Education", options=['Doctorate', 'High School Dropout', 'High School', 'College', 'Masters', 'Bachelors'])
 with col2:
     income = st.number_input("Income", min_value=0.0, value=50000.0, format="%.2f")
     employment_status = st.selectbox("Employment Status", options=['Retired', 'Employed', 'Self-employed', 'Unemployed', 'Student'])
@@ -115,5 +115,6 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with ❤️ by Your Name/Team")
+
 
 
