@@ -2,11 +2,17 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import xgboost as xgb # Import xgboost to check its instance
 
 # Load the trained model
 # Assuming the model file 'xgboost_model_cpu.pkl' is in the same directory as app.py
 try:
     model = joblib.load('Models/xgboost_model_cpu.pkl')
+    # Explicitly set predictor to 'cpu_predictor' to avoid GPU-related issues on deployment
+    if hasattr(model, 'named_steps') and 'regressor' in model.named_steps:
+        # Check if the regressor is an XGBRegressor
+        if isinstance(model.named_steps['regressor'], xgb.XGBRegressor):
+            model.named_steps['regressor'].set_params(predictor='cpu_predictor')
 except FileNotFoundError:
     st.error("Model file 'xgboost_model_cpu.pkl' not found. Please ensure it's in the same directory as app.py.")
     st.stop()
@@ -115,4 +121,3 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with ❤️ by Your Name/Team")
-
