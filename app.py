@@ -21,8 +21,8 @@ with col1:
     age = st.slider("Age", min_value=18, max_value=100, value=30)
     sex = st.selectbox("Sex", options=['Female', 'Male', 'Other'])
     marital_status = st.selectbox("Marital Status", options=['Married', 'Divorced', 'Single', 'Widowed'])
-    household_size = st.number_input("Household Size", min_value=1, max_value=10, value=2)
-    dependents = st.number_input("Dependents", min_value=0, max_value=9, value=1)
+    household_size = st.slider("Household Size", min_value=1, max_value=10, value=2)
+    dependents = st.slider("Dependents", min_value=0, max_value=9, value=1)
     education = st.selectbox("Education", options=['Doctorate', 'High School Dropout', 'High School', 'College', 'Masters', 'Bachelors'])
 with col2:
     income = st.number_input("Income", min_value=0.0, value=1000000.0, format="%.2f")
@@ -33,7 +33,7 @@ with col2:
 st.header("Health Metrics & Habits")
 col3, col4 = st.columns(2)
 with col3:
-    bmi = st.number_input("BMI", min_value=0.0, value=25.0, format="%.1f")
+    bmi = st.slider("BMI", min_value=12.0, max_value=50.0, value=25.0, format="%.1f")
     smoker = st.selectbox("Smoker", options=['Never', 'Former', 'Current'])
     alcohol_freq = st.selectbox("Alcohol Frequency", options=['Never', 'Weekly', 'Daily', 'Occasional'])
     systolic_bp = st.number_input("Systolic BP", min_value=0.0, value=120.0, format="%.1f")
@@ -115,6 +115,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with Shaikh Borhan Uddin")
+
 
 
 
