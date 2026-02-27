@@ -6,7 +6,7 @@ import numpy as np
 # Load the trained model
 # Assuming the model file 'xgboost_model_cpu.pkl' is in the same directory as app.py
 try:
-    model = joblib.load('xgboost_model_cpu.pkl')
+    model = joblib.load('Models/xgboost_model_cpu.pkl')
 except FileNotFoundError:
     st.error("Model file 'xgboost_model_cpu.pkl' not found. Please ensure it's in the same directory as app.py.")
     st.stop()
@@ -115,3 +115,4 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with ❤️ by Your Name/Team")
+
