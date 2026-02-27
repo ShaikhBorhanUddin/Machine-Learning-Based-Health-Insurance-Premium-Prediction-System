@@ -18,7 +18,7 @@ st.markdown("Enter the details below to predict the annual medical insurance pre
 st.header("Personal Information")
 col1, col2 = st.columns(2)
 with col1:
-    age = st.number_input("Age", min_value=18, max_value=100, value=30)
+    age = st.slider("Age", min_value=18, max_value=100, value=30)
     sex = st.selectbox("Sex", options=['Female', 'Male', 'Other'])
     marital_status = st.selectbox("Marital Status", options=['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.number_input("Household Size", min_value=1, max_value=10, value=2)
@@ -115,6 +115,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with Shaikh Borhan Uddin")
+
 
 
 
