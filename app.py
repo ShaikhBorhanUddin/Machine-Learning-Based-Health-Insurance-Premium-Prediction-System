@@ -66,7 +66,8 @@ with col5:
     st.subheader(" ")
 
     visits_last_year = st.slider("Visits Last Year", min_value=0, max_value=20, value=5)
-    hospitalizations_last_3yrs = st.slider("Hospitalizations Last 3 Years", min_value=0, max_value=3, value=0)
+    hospitalizations_last_3yrs_options = {0: "Never", 1: "Last Year", 2: "Last 2 Years", 3: "Every Year"}
+    hospitalizations_last_3yrs = st.selectbox("Hospitalizations in Last 3 Years", options=list(hospitalizations_last_3yrs_options.keys()), format_func=lambda x: hospitalizations_last_3yrs_options[x])
     days_hospitalized_last_3yrs = st.slider("Days Hospitalized Last 3 Years", min_value=0, max_value=30, value=0)
     hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     diabetes = st.selectbox("Diabetes", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
@@ -141,6 +142,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
