@@ -3,10 +3,6 @@ import pandas as pd
 import joblib
 import numpy as np
 
-st.set_page_config(
-    page_title="Medical Insurance Premium Predictor",
-    layout="wide"
-)
 # Load the trained model
 # Assuming the model file 'xgboost_model_cpu.pkl' is in the same directory as app.py
 try:
@@ -151,6 +147,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
