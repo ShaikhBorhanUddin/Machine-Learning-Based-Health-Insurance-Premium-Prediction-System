@@ -15,34 +15,59 @@ st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="cen
 st.title("🏥 Medical Insurance Premium Prediction")
 st.markdown("Enter the details below to predict the annual medical insurance premium.")
 
-st.header("Personal Information")
-col1, col2 = st.columns(2)
-with col1:
+st.header("Personal & Health Details")
+
+left_col, right_col = st.columns(2)
+
+# ================= LEFT COLUMN =================
+with left_col:
+    st.subheader("Personal Information")
+
     age = st.slider("Age", min_value=18, max_value=100, value=30)
     sex = st.selectbox("Sex", options=['Female', 'Male', 'Other'])
-    marital_status = st.selectbox("Marital Status", options=['Married', 'Divorced', 'Single', 'Widowed'])
+    marital_status = st.selectbox(
+        "Marital Status",
+        options=['Married', 'Divorced', 'Single', 'Widowed']
+    )
     household_size = st.slider("Household Size", min_value=1, max_value=10, value=2)
     dependents = st.slider("Dependents", min_value=0, max_value=9, value=1)
-    education = st.selectbox("Education", options=['Doctorate', 'High School Dropout', 'High School', 'College', 'Masters', 'Bachelors'])
-with col2:
+    education = st.selectbox(
+        "Education",
+        options=[
+            'Doctorate', 'High School Dropout', 'High School',
+            'College', 'Masters', 'Bachelors'
+        ]
+    )
+
     income = st.number_input("Income", min_value=0.0, value=1000000.0, format="%.2f")
-    employment_status = st.selectbox("Employment Status", options=['Retired', 'Employed', 'Self-employed', 'Unemployed'])
+    employment_status = st.selectbox(
+        "Employment Status",
+        options=['Retired', 'Employed', 'Self-employed', 'Unemployed']
+    )
     region = st.selectbox("Region", options=['North', 'Central', 'West', 'East', 'South'])
     urban_rural = st.selectbox("Urban/Rural", options=['Suburban', 'Urban', 'Rural'])
-    
-st.header("Health Metrics & Habits")
-col3, col4 = st.columns(2)
-with col3:
+
+
+# ================= RIGHT COLUMN =================
+with right_col:
+    st.subheader("Health Metrics & Habits")
+
     bmi = st.slider("BMI", min_value=12.0, max_value=50.0, value=25.0, format="%.1f")
     smoker = st.selectbox("Smoking Habit", options=['Never', 'Former', 'Current'])
-    alcohol_freq = st.selectbox("Alcohol Consumption", options=['Never', 'Weekly', 'Daily', 'Occasional'])
+    alcohol_freq = st.selectbox(
+        "Alcohol Consumption",
+        options=['Never', 'Weekly', 'Daily', 'Occasional']
+    )
+
     systolic_bp = st.slider("Systolic BP", min_value=60.0, max_value=260.0, format="%.1f")
     diastolic_bp = st.slider("Diastolic BP", min_value=40.0, max_value=180.0, format="%.1f")
-with col4:
+
     ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
     medication_count = st.number_input("Medication Count", min_value=0, max_value=10, value=1)
-    annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
+    annual_medical_cost = st.number_input(
+        "Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f"
+    )
 
 st.header("Medical History & Policy Details")
 col5, col6 = st.columns(2)
@@ -115,3 +140,4 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
