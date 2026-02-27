@@ -61,23 +61,25 @@ with col4:
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     
 st.header("Medical History & Policy Details")
-col5, col6 = st.columns(2)
+col5, col6, col17, col18 = st.columns(4)
 with col5:
     visits_last_year = st.slider("Visits Last Year", min_value=0, max_value=20, value=5)
     hospitalizations_last_3yrs = st.slider("Hospitalizations Last 3 Years", min_value=0, max_value=3, value=0)
     days_hospitalized_last_3yrs = st.slider("Days Hospitalized Last 3 Years", min_value=0, max_value=30, value=0)
     hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     diabetes = st.selectbox("Diabetes", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+with col16:
     asthma = st.selectbox("Asthma", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     copd = st.selectbox("COPD", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     cardiovascular_disease = st.selectbox("Cardiovascular Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-with col6:
     cancer_history = st.selectbox("Cancer History", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     kidney_disease = st.selectbox("Kidney Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+with col7:
     liver_disease = st.selectbox("Liver Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     arthritis = st.selectbox("Arthritis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     had_major_procedure = st.selectbox("Had Major Procedure", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+with col18:
     deductible = st.number_input("Deductible", min_value=0, max_value=5000, value=500)
     copay = st.number_input("Copay", min_value=0, max_value=100, value=20)
     policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=1)
@@ -131,4 +133,5 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
