@@ -64,7 +64,7 @@ with col6:
     had_major_procedure = st.selectbox("Had Major Procedure", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     deductible = st.number_input("Deductible", min_value=0, max_value=5000, value=500)
     copay = st.number_input("Copay", min_value=0, max_value=100, value=20)
-    policy_term_years = st.number_input("Policy Term (Years)", min_value=1, max_value=10, value=1)
+    policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=1)
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
     network_tier = st.selectbox("Network Tier", options=['Platinum', 'Gold', 'Silver', 'Bronze'])
 
@@ -115,6 +115,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with Shaikh Borhan Uddin")
+
 
 
 
