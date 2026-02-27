@@ -61,7 +61,7 @@ with col4:
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     
 st.header("Medical History & Policy Details")
-col5, col6, col17, col18 = st.columns(4)
+col5, col16, col17, col18 = st.columns(4)
 with col5:
     st.subheader(" ")
 
@@ -141,6 +141,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
