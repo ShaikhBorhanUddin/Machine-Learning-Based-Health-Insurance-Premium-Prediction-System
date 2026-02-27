@@ -21,7 +21,7 @@ col1, col2, col3, col4 = st.columns(4)
 
 # ================= PERSONAL INFO (COL 1) =================
 with col1:
-    st.subheader("Personal Info")
+    st.subheader(" ")
 
     age = st.slider("Age", 18, 100, 30)
     sex = st.selectbox("Sex", ['Female', 'Male', 'Other'])
@@ -42,7 +42,7 @@ with col2:
 
 # ================= HEALTH METRICS (COL 3) =================
 with col3:
-    st.subheader("Health Metrics")
+    st.subheader(" ")
 
     bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
@@ -142,6 +142,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
