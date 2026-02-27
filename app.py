@@ -25,28 +25,17 @@ with col1:
 
     age = st.slider("Age", 18, 100, 30)
     sex = st.selectbox("Sex", ['Female', 'Male', 'Other'])
-    marital_status = st.selectbox(
-        "Marital Status",
-        ['Married', 'Divorced', 'Single', 'Widowed']
-    )
+    marital_status = st.selectbox("Marital Status", ['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.slider("Household Size", 1, 10, 2)
     dependents = st.slider("Dependents", 0, 9, 1)
-
 
 # ================= PERSONAL INFO (COL 2) =================
 with col2:
     st.subheader(" ")
 
-    education = st.selectbox(
-        "Education",
-        ['Doctorate', 'High School Dropout', 'High School',
-         'College', 'Masters', 'Bachelors']
-    )
+    education = st.selectbox("Education", ['Doctorate', 'High School Dropout', 'High School', 'College', 'Masters', 'Bachelors'])
     income = st.number_input("Income", min_value=0.0, value=1000000.0, format="%.2f")
-    employment_status = st.selectbox(
-        "Employment Status",
-        ['Retired', 'Employed', 'Self-employed', 'Unemployed']
-    )
+    employment_status = st.selectbox("Employment Status", ['Retired', 'Employed', 'Self-employed', 'Unemployed'])
     region = st.selectbox("Region", ['North', 'Central', 'West', 'East', 'South'])
     urban_rural = st.selectbox("Urban/Rural", ['Suburban', 'Urban', 'Rural'])
 
@@ -57,10 +46,7 @@ with col3:
 
     bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
-    alcohol_freq = st.selectbox(
-        "Alcohol Consumption",
-        ['Never', 'Weekly', 'Daily', 'Occasional']
-    )
+    alcohol_freq = st.selectbox("Alcohol Consumption", ['Never', 'Weekly', 'Daily', 'Occasional'])
     systolic_bp = st.slider("Systolic BP", 60.0, 260.0, format="%.1f")
     diastolic_bp = st.slider("Diastolic BP", 40.0, 180.0, format="%.1f")
 
@@ -72,9 +58,7 @@ with col4:
     ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
     medication_count = st.number_input("Medication Count", min_value=0, max_value=10, value=1)
-    annual_medical_cost = st.number_input(
-        "Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f"
-    )
+    annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     
 st.header("Medical History & Policy Details")
 col5, col6 = st.columns(2)
@@ -147,3 +131,4 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
