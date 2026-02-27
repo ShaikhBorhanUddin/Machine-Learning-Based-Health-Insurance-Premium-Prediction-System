@@ -11,7 +11,7 @@ except FileNotFoundError:
     st.error("Model file 'xgboost_model_cpu.pkl' not found. Please ensure it's in the same directory as app.py.")
     st.stop()
 
-st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="centered")
+st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="wide")
 st.title("🏥 Medical Insurance Premium Prediction")
 st.markdown("Enter the details below to predict the annual medical insurance premium.")
 
@@ -147,6 +147,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
