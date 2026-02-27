@@ -47,9 +47,9 @@ with col4:
 st.header("Medical History & Policy Details")
 col5, col6 = st.columns(2)
 with col5:
-    visits_last_year = st.number_input("Visits Last Year", min_value=0, max_value=20, value=5)
-    hospitalizations_last_3yrs = st.number_input("Hospitalizations Last 3 Years", min_value=0, max_value=10, value=0)
-    days_hospitalized_last_3yrs = st.number_input("Days Hospitalized Last 3 Years", min_value=0, max_value=30, value=0)
+    visits_last_year = st.slider("Visits Last Year", min_value=0, max_value=20, value=5)
+    hospitalizations_last_3yrs = st.slider("Hospitalizations Last 3 Years", min_value=0, max_value=3, value=0)
+    days_hospitalized_last_3yrs = st.slider("Days Hospitalized Last 3 Years", min_value=0, max_value=30, value=0)
     hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     diabetes = st.selectbox("Diabetes", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     asthma = st.selectbox("Asthma", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
@@ -115,6 +115,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with Shaikh Borhan Uddin")
+
 
 
 
