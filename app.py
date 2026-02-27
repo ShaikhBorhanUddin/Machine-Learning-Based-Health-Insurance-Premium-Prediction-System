@@ -36,8 +36,8 @@ with col3:
     bmi = st.slider("BMI", min_value=12.0, max_value=50.0, value=25.0, format="%.1f")
     smoker = st.selectbox("Smoking Habit", options=['Never', 'Former', 'Current'])
     alcohol_freq = st.selectbox("Alcohol Consumption", options=['Never', 'Weekly', 'Daily', 'Occasional'])
-    systolic_bp = st.slider("Systolic BP", min_value=60.0, value=260.0, format="%.1f")
-    diastolic_bp = st.slider("Diastolic BP", min_value=40.0, value=180.0, format="%.1f")
+    systolic_bp = st.slider("Systolic BP", min_value=60.0, max_value=260.0, format="%.1f")
+    diastolic_bp = st.slider("Diastolic BP", min_value=40.0, max_value=180.0, format="%.1f")
 with col4:
     ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
@@ -115,6 +115,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with Shaikh Borhan Uddin")
+
 
 
 
