@@ -47,7 +47,7 @@ with col3:
     bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
     alcohol_freq = st.selectbox("Alcohol Consumption", ['Never', 'Weekly', 'Daily', 'Occasional'])
-    systolic_bp, diastolic_bp = st.slider("Blood Pressure (Systolic / Diastolic)", min_value=(60, 40), max_value=(260, 180), value=(120, 80), step=1)
+    systolic_bp, diastolic_bp = st.slider("Blood Pressure (Systolic / Diastolic)", min_value=(60, 40), max_value=(260, 180), value=(120, 80))
     
 # ================= HEALTH METRICS (COL 4) =================
 with col4:
@@ -139,6 +139,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
