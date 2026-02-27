@@ -17,50 +17,57 @@ st.markdown("Enter the details below to predict the annual medical insurance pre
 
 st.header("Personal & Health Details")
 
-left_col, right_col = st.columns(2)
+col1, col2, col3, col4 = st.columns(4)
 
-# ================= LEFT COLUMN =================
-with left_col:
-    st.subheader("Personal Information")
+# ================= PERSONAL INFO (COL 1) =================
+with col1:
+    st.subheader("Personal Info")
 
-    age = st.slider("Age", min_value=18, max_value=100, value=30)
-    sex = st.selectbox("Sex", options=['Female', 'Male', 'Other'])
+    age = st.slider("Age", 18, 100, 30)
+    sex = st.selectbox("Sex", ['Female', 'Male', 'Other'])
     marital_status = st.selectbox(
         "Marital Status",
-        options=['Married', 'Divorced', 'Single', 'Widowed']
+        ['Married', 'Divorced', 'Single', 'Widowed']
     )
-    household_size = st.slider("Household Size", min_value=1, max_value=10, value=2)
-    dependents = st.slider("Dependents", min_value=0, max_value=9, value=1)
+    household_size = st.slider("Household Size", 1, 10, 2)
+    dependents = st.slider("Dependents", 0, 9, 1)
+
+
+# ================= PERSONAL INFO (COL 2) =================
+with col2:
+    st.subheader(" ")
+
     education = st.selectbox(
         "Education",
-        options=[
-            'Doctorate', 'High School Dropout', 'High School',
-            'College', 'Masters', 'Bachelors'
-        ]
+        ['Doctorate', 'High School Dropout', 'High School',
+         'College', 'Masters', 'Bachelors']
     )
-
     income = st.number_input("Income", min_value=0.0, value=1000000.0, format="%.2f")
     employment_status = st.selectbox(
         "Employment Status",
-        options=['Retired', 'Employed', 'Self-employed', 'Unemployed']
+        ['Retired', 'Employed', 'Self-employed', 'Unemployed']
     )
-    region = st.selectbox("Region", options=['North', 'Central', 'West', 'East', 'South'])
-    urban_rural = st.selectbox("Urban/Rural", options=['Suburban', 'Urban', 'Rural'])
+    region = st.selectbox("Region", ['North', 'Central', 'West', 'East', 'South'])
+    urban_rural = st.selectbox("Urban/Rural", ['Suburban', 'Urban', 'Rural'])
 
 
-# ================= RIGHT COLUMN =================
-with right_col:
-    st.subheader("Health Metrics & Habits")
+# ================= HEALTH METRICS (COL 3) =================
+with col3:
+    st.subheader("Health Metrics")
 
-    bmi = st.slider("BMI", min_value=12.0, max_value=50.0, value=25.0, format="%.1f")
-    smoker = st.selectbox("Smoking Habit", options=['Never', 'Former', 'Current'])
+    bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
+    smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
     alcohol_freq = st.selectbox(
         "Alcohol Consumption",
-        options=['Never', 'Weekly', 'Daily', 'Occasional']
+        ['Never', 'Weekly', 'Daily', 'Occasional']
     )
+    systolic_bp = st.slider("Systolic BP", 60.0, 260.0, format="%.1f")
+    diastolic_bp = st.slider("Diastolic BP", 40.0, 180.0, format="%.1f")
 
-    systolic_bp = st.slider("Systolic BP", min_value=60.0, max_value=260.0, format="%.1f")
-    diastolic_bp = st.slider("Diastolic BP", min_value=40.0, max_value=180.0, format="%.1f")
+
+# ================= HEALTH METRICS (COL 4) =================
+with col4:
+    st.subheader(" ")
 
     ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
@@ -68,7 +75,7 @@ with right_col:
     annual_medical_cost = st.number_input(
         "Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f"
     )
-
+    
 st.header("Medical History & Policy Details")
 col5, col6 = st.columns(2)
 with col5:
@@ -140,4 +147,5 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
