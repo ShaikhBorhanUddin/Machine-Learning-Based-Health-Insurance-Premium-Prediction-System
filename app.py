@@ -77,29 +77,63 @@ with col4:
     )
     
 st.header("Medical History & Policy Details")
-col5, col6 = st.columns(2)
-with col5:
-    visits_last_year = st.slider("Visits Last Year", min_value=0, max_value=20, value=5)
-    hospitalizations_last_3yrs = st.slider("Hospitalizations Last 3 Years", min_value=0, max_value=3, value=0)
-    days_hospitalized_last_3yrs = st.slider("Days Hospitalized Last 3 Years", min_value=0, max_value=30, value=0)
-    hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    diabetes = st.selectbox("Diabetes", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    asthma = st.selectbox("Asthma", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    copd = st.selectbox("COPD", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    cardiovascular_disease = st.selectbox("Cardiovascular Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-with col6:
-    cancer_history = st.selectbox("Cancer History", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    kidney_disease = st.selectbox("Kidney Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    liver_disease = st.selectbox("Liver Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    arthritis = st.selectbox("Arthritis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    had_major_procedure = st.selectbox("Had Major Procedure", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    deductible = st.number_input("Deductible", min_value=0, max_value=5000, value=500)
-    copay = st.number_input("Copay", min_value=0, max_value=100, value=20)
-    policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=1)
-    plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
-    network_tier = st.selectbox("Network Tier", options=['Platinum', 'Gold', 'Silver', 'Bronze'])
 
+c1, c2, c3, c4 = st.columns(4)
+
+# ================= COLUMN 1 (5) =================
+with c1:
+    st.subheader("Medical Usage")
+
+    visits_last_year = st.slider("Visits Last Year", 0, 20, 5)
+    hospitalizations_last_3yrs = st.slider("Hospitalizations (Last 3 Years)", 0, 3, 0)
+    days_hospitalized_last_3yrs = st.slider("Days Hospitalized (Last 3 Years)", 0, 30, 0)
+    medication_count = st.number_input("Medication Count", 0, 10, 1)
+    had_major_procedure = st.selectbox(
+        "Had Major Procedure",
+        [0, 1],
+        format_func=lambda x: "Yes" if x == 1 else "No"
+    )
+
+# ================= COLUMN 2 (5) =================
+with c2:
+    st.subheader("Chronic Conditions")
+
+    hypertension = st.selectbox("Hypertension", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    diabetes = st.selectbox("Diabetes", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    asthma = st.selectbox("Asthma", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    copd = st.selectbox("COPD", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    cardiovascular_disease = st.selectbox(
+        "Cardiovascular Disease",
+        [0, 1],
+        format_func=lambda x: "Yes" if x == 1 else "No"
+    )
+
+# ================= COLUMN 3 (5) =================
+with c3:
+    st.subheader("Medical Conditions")
+
+    cancer_history = st.selectbox("Cancer History", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    kidney_disease = st.selectbox("Kidney Disease", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    liver_disease = st.selectbox("Liver Disease", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    arthritis = st.selectbox("Arthritis", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    mental_health = st.selectbox("Mental Health", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+
+# ================= COLUMN 4 (4) =================
+with c4:
+    st.subheader("Policy Details")
+
+    deductible = st.number_input("Deductible", 0, 5000, 500)
+    copay = st.number_input("Copay", 0, 100, 20)
+    policy_term_years = st.slider("Policy Term (Years)", 1, 10, 1)
+    plan_type = st.selectbox(
+        "Plan Type",
+        [
+            "Preferred Provider Organization",
+            "Point-of-Service",
+            "Health Maintenance Organization",
+            "Exclusive Provider Organization"
+        ]
+    )
 
 if st.button("Predict Annual Premium", type="primary"):
     # Create a DataFrame from inputs, ensuring correct column order and dtypes
@@ -147,6 +181,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
