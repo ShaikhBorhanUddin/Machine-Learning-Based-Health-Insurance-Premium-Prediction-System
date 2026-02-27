@@ -66,7 +66,7 @@ with col6:
     copay = st.number_input("Copay", min_value=0, max_value=100, value=20)
     policy_term_years = st.number_input("Policy Term (Years)", min_value=1, max_value=10, value=1)
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization', 'High Deductible Health Plan'])
-    network_tier = st.selectbox("Network Tier", options=['Platinum', 'Gold', 'Silver', 'Bronze])
+    network_tier = st.selectbox("Network Tier", options=['Platinum', 'Gold', 'Silver', 'Bronze'])
 
 
 if st.button("Predict Annual Premium", type="primary"):
@@ -115,4 +115,5 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed with ❤️ by Your Name/Team")
+
 
