@@ -24,7 +24,7 @@ with col1:
     st.subheader(" ")
 
     age = st.slider("Age", 18, 100, 30)
-    sex = st.selectbox("Sex", ['Female', 'Male', 'Other'])
+    sex = st.selectbox("Gender", ['Female', 'Male', 'Other'])
     marital_status = st.selectbox("Marital Status", ['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.slider("Household Size", 1, 10, 2)
     dependents = st.slider("Dependents", 0, 9, 1)
@@ -33,8 +33,8 @@ with col1:
 with col2:
     st.subheader(" ")
 
-    education = st.selectbox("Education", ['Doctorate', 'High School Dropout', 'High School', 'College', 'Masters', 'Bachelors'])
-    income = st.number_input("Income", min_value=0.0, value=1000000.0, format="%.2f")
+    education = st.selectbox("Education Level", ['Doctorate', 'High School Dropout', 'High School', 'College', 'Masters', 'Bachelors'])
+    income = st.number_input("Income in USD", min_value=0.0, value=1000000.0, format="%.2f")
     employment_status = st.selectbox("Employment Status", ['Retired', 'Employed', 'Self-employed', 'Unemployed'])
     region = st.selectbox("Region", ['North', 'Central', 'West', 'East', 'South'])
     urban_rural = st.selectbox("Urban/Rural", ['Suburban', 'Urban', 'Rural'])
@@ -142,6 +142,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
