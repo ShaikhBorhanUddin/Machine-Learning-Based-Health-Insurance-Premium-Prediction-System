@@ -47,7 +47,7 @@ with col3:
     bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
     alcohol_freq = st.selectbox("Alcohol Consumption", ['Never', 'Weekly', 'Daily', 'Occasional'])
-    systolic_bp = st.slider("Systolic BP", 60.0, 260.0, format="%.1f")
+    systolic_bp = st.slider("Systolic BP", 60, 260, 120)
     diastolic_bp = st.slider("Diastolic BP", 40.0, 180.0, format="%.1f")
 
 
@@ -142,6 +142,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
