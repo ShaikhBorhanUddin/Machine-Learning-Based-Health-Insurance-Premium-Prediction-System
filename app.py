@@ -37,7 +37,7 @@ with col2:
     income = st.number_input("Income in USD", min_value=0.0, value=1000000.0, format="%.2f")
     employment_status = st.selectbox("Employment Status", ['Retired', 'Employed', 'Self-employed', 'Unemployed'])
     region = st.selectbox("Region", ['North', 'Central', 'West', 'East', 'South'])
-    urban_rural = st.selectbox("Urban/Rural", ['Suburban', 'Urban', 'Rural'])
+    urban_rural = st.selectbox("Geography", ['Suburban', 'Urban', 'Rural'])
 
 
 # ================= HEALTH METRICS (COL 3) =================
@@ -142,6 +142,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
