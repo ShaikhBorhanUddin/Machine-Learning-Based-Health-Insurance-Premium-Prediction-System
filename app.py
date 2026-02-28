@@ -56,7 +56,6 @@ with col4:
 
     ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
-    medication_count = st.number_input("Medication Count", min_value=0, max_value=10, value=1)
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     
 st.header("Medical History & Policy Details")
@@ -84,6 +83,7 @@ with col17:
     liver_disease = st.selectbox("Liver Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     arthritis = st.selectbox("Arthritis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    medication_count = st.number_input("Medication Count", min_value=0, max_value=10, value=1)
     had_major_procedure = st.selectbox("Had Major Procedure", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
 with col18:
     st.subheader(" ")
@@ -141,6 +141,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
