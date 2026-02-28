@@ -21,6 +21,18 @@ BMI_LABELS = ['Underweight', 'Normal', 'Overweight', 'Obese I', 'Obese II', 'Obe
 def get_bmi_group(bmi_value):
     return pd.cut(pd.Series([bmi_value]), bins=BMI_BINS, labels=BMI_LABELS, right=False).iloc[0]
 
+def get_bp_category(systolic_bp, diastolic_bp):
+    if systolic_bp <= 90 or diastolic_bp <= 60:
+        return "Low Blood Pressure"
+    elif systolic_bp < 120 and diastolic_bp < 80:
+        return "Normal"
+    elif 120 <= systolic_bp <= 129 and diastolic_bp < 80:
+        return "Elevated"
+    elif (130 <= systolic_bp <= 139) or (80 <= diastolic_bp <= 89):
+        return "Hypertension Stage 1"
+    else:
+        return "Hypertension Stage 2"
+
 st.header("Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -57,6 +69,8 @@ with col3:
     alcohol_freq = st.selectbox("Alcohol Consumption", ['Never', 'Weekly', 'Daily', 'Occasional'])
     systolic_bp = st.slider("Systolic BP", 60, 260, 120)
     diastolic_bp = st.slider("Diastolic BP", min_value=40, max_value=systolic_bp - 10, value=min(80, systolic_bp - 10))
+    bp_category = get_bp_category(systolic_bp, diastolic_bp)
+    st.markdown(f"**Blood Pressure Category:** {bp_category}")
 
 # ================= HEALTH METRICS (COL 4) =================
 with col4:
@@ -149,6 +163,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
