@@ -15,6 +15,12 @@ st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="wid
 st.title("🏥 Medical Insurance Premium Prediction")
 st.markdown("Enter the details below to predict the annual medical insurance premium.")
 
+# BMI bins (same as training)
+BMI_BINS = [0, 18.5, 25, 30, 35, 40, float('inf')]
+BMI_LABELS = ['Underweight', 'Normal', 'Overweight', 'Obese I', 'Obese II', 'Obese III']
+def get_bmi_group(bmi_value):
+    return pd.cut(pd.Series([bmi_value]), bins=BMI_BINS, labels=BMI_LABELS, right=False).iloc[0]
+
 st.header("Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -45,6 +51,8 @@ with col3:
     st.subheader(" ")
 
     bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
+    bmi_group = get_bmi_group(bmi)
+    st.text_input("BMI Group (Auto-calculated)", value=str(bmi_group), disabled=True)
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
     alcohol_freq = st.selectbox("Alcohol Consumption", ['Never', 'Weekly', 'Daily', 'Occasional'])
     systolic_bp = st.slider("Systolic BP", 60, 260, 120)
@@ -141,6 +149,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
