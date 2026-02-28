@@ -34,7 +34,7 @@ with col2:
     st.subheader(" ")
 
     education = st.selectbox("Education Level", ['Doctorate', 'High School Dropout', 'High School', 'College', 'Masters', 'Bachelors'])
-    income = st.number_input("Income in USD", min_value=0.0, value=1000000.0, format="%.2f")
+    income = st.number_input("Income in USD", 10000, 10000000, 12000)
     employment_status = st.selectbox("Employment Status", ['Retired', 'Employed', 'Self-employed', 'Unemployed'])
     region = st.selectbox("Region", ['North', 'Central', 'West', 'East', 'South'])
     urban_rural = st.selectbox("Geography", ['Suburban', 'Urban', 'Rural'])
@@ -141,6 +141,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
