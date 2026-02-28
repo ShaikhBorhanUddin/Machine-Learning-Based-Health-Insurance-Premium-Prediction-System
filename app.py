@@ -22,15 +22,15 @@ def get_bmi_group(bmi_value):
     return pd.cut(pd.Series([bmi_value]), bins=BMI_BINS, labels=BMI_LABELS, right=False).iloc[0]
 
 def get_bp_category(systolic_bp, diastolic_bp):
-    if systolic_bp <= 90 or diastolic_bp <= 60:
+    if systolic_bp < 90 or diastolic_bp < 60:
         return "Low Blood Pressure"
-    elif systolic_bp < 120 and diastolic_bp < 80:
+    elif 90 <= systolic_bp <= 119 and 60 <= diastolic_bp <= 79:
         return "Normal"
     elif 120 <= systolic_bp <= 129 and diastolic_bp < 80:
         return "Elevated"
-    elif (130 <= systolic_bp <= 139) or (80 <= diastolic_bp <= 89):
+    elif 130 <= systolic_bp <= 139 or 80 <= diastolic_bp <= 89:
         return "Hypertension Stage 1"
-    else:
+    elif systolic_bp >= 140 or diastolic_bp >= 90:
         return "Hypertension Stage 2"
 
 st.header("Personal & Health Details")
@@ -163,6 +163,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
