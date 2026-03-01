@@ -33,6 +33,12 @@ def get_bp_category(systolic_bp, diastolic_bp):
     elif systolic_bp >= 140 or diastolic_bp >= 90:
         return "Hypertension Stage 2"
 
+LDL_BINS = [0, 100, 130, 160, 190, np.inf]
+LDL_LABELS = ['Optimal', 'Near Optimal', 'Borderline High', 'High', 'Very High']
+
+def get_ldl_category(ldl_value):
+    return pd.cut(pd.Series([ldl_value]), bins=LDL_BINS, labels=LDL_LABELS, right=False).iloc[0]
+    
 st.header("Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -77,6 +83,8 @@ with col4:
     st.subheader(" ")
 
     ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
+    ldl_category = get_ldl_category(ldl)
+    st.text_input("LDL Category (Auto-calculated)", value=str(ldl_category), disabled=True)
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     
@@ -163,6 +171,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
