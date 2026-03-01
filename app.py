@@ -139,12 +139,12 @@ with col16:
     asthma = st.selectbox("Asthma", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     copd = st.selectbox("COPD", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     cardiovascular_disease = st.selectbox("Cardiovascular Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    cancer_history = st.selectbox("Cancer History", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    kidney_disease = st.selectbox("Kidney Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-
+    
 with col17:
     st.subheader(" ")
-
+   
+    cancer_history = st.selectbox("Cancer History", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    kidney_disease = st.selectbox("Kidney Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     liver_disease = st.selectbox("Liver Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     arthritis = st.selectbox("Arthritis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
@@ -209,4 +209,5 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
