@@ -69,9 +69,9 @@ col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.subheader(" ")
-
-    age = st.slider("Age", 18, 100, 30)
+    
     sex = st.selectbox("Gender", ['Male', 'Female', 'Other'])
+    age = st.slider("Age", 18, 100, 30)
     marital_status = st.selectbox("Marital Status", ['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.slider("Household Size", 1, 10, 2)
     dependents = st.slider("Dependents", 0, 9, 1)
@@ -207,6 +207,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
