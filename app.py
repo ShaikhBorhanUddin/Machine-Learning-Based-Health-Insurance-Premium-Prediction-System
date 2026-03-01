@@ -101,6 +101,8 @@ with c5:
         format_func=lambda x: {0:"Never",1:"Last Year",2:"Last 2 Years",3:"Every Year"}[x])
     days_hospitalized_last_3yrs = st.slider("Days Hospitalized Last 3 Years", 0, 30, 5)
     medication_count = st.number_input("Medication Count", 0, 10, 1)
+    annual_medical_cost = st.number_input("Last Year Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
+    st.text_input("Medical Cost Category (Auto-calculated)", value=str(get_annual_medical_cost_category(annual_medical_cost)), disabled=True)
 
 with c6:
     hypertension = st.selectbox("Hypertension", [0,1], format_func=lambda x: "Yes" if x else "No")
@@ -173,3 +175,4 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
