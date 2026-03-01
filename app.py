@@ -185,18 +185,13 @@ if st.button("Predict Annual Premium", type="primary"):
                                        'mental_health', 'had_major_procedure'])
 
     # Ensure dtypes are correct for prediction
-    for col in ['hypertension', 'diabetes', 'asthma', 'copd', 'cardiovascular_disease',
-                'cancer_history', 'kidney_disease', 'liver_disease', 'arthritis',
-                'mental_health', 'had_major_procedure']:
+    for col in ['hypertension', 'diabetes', 'asthma', 'copd', 'cardiovascular_disease', 'cancer_history', 'kidney_disease', 'liver_disease', 'arthritis', 'mental_health', 'had_major_procedure']:
         input_data[col] = input_data[col].astype(np.int64)
 
-    for col in ['age', 'household_size', 'dependents', 'visits_last_year', 
-                'hospitalizations_last_3yrs', 'days_hospitalized_last_3yrs', 
-                'medication_count', 'deductible', 'copay', 'policy_term_years']:
+    for col in ['age', 'household_size', 'dependents', 'visits_last_year', 'hospitalizations_last_3yrs', 'days_hospitalized_last_3yrs', 'medication_count', 'deductible', 'copay', 'policy_term_years']:
         input_data[col] = pd.to_numeric(input_data[col], errors='coerce').astype(np.int64)
 
-    for col in ['income', 'bmi', 'systolic_bp', 'diastolic_bp', 'ldl', 
-                'hba1c', 'annual_medical_cost']:
+    for col in ['income', 'bmi', 'systolic_bp', 'diastolic_bp', 'ldl', 'hba1c', 'annual_medical_cost']:
         input_data[col] = pd.to_numeric(input_data[col], errors='coerce').astype(np.float64)
 
     try:
@@ -207,6 +202,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
