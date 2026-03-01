@@ -148,7 +148,8 @@ with col17:
     liver_disease = st.selectbox("Liver Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     arthritis = st.selectbox("Arthritis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    
+    network_tier = st.selectbox("Network Tier", options=['Platinum', 'Gold', 'Silver', 'Bronze'])
+
 with col18:
     st.subheader(" ")
 
@@ -160,7 +161,6 @@ with col18:
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
     plan_suggestion = PLAN_TYPE_SUGGESTIONS.get(plan_type, "")
     st.text_area("Plan Type Explanation (Auto-generated)", value=plan_suggestion, disabled=True, height=100)
-    network_tier = st.selectbox("Network Tier", options=['Platinum', 'Gold', 'Silver', 'Bronze'])
 
 
 if st.button("Predict Annual Premium", type="primary"):
@@ -209,6 +209,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
