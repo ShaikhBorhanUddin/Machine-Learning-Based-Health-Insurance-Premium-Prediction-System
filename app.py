@@ -38,6 +38,12 @@ LDL_LABELS = ['Optimal', 'Near Optimal', 'Borderline High', 'High', 'Very High']
 
 def get_ldl_category(ldl_value):
     return pd.cut(pd.Series([ldl_value]), bins=LDL_BINS, labels=LDL_LABELS, right=False).iloc[0]
+
+HBA1C_BINS = [0, 5.7, 6.5, np.inf]
+HBA1C_LABELS = ['Normal', 'Prediabetes', 'Diabetes']
+
+def get_hba1c_category(hba1c_value):
+    return pd.cut(pd.Series([hba1c_value]), bins=HBA1C_BINS, labels=HBA1C_LABELS, right=False).iloc[0]
     
 st.header("Personal & Health Details")
 
@@ -86,6 +92,8 @@ with col4:
     ldl_category = get_ldl_category(ldl)
     st.text_input("LDL Category (Auto-calculated)", value=str(ldl_category), disabled=True)
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
+    hba1c_category = get_hba1c_category(hba1c)
+    st.text_input("HbA1c Category (Auto-calculated)", value=str(hba1c_category), disabled=True)
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     
 st.header("Medical History & Policy Details")
@@ -171,32 +179,6 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
