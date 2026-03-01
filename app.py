@@ -55,6 +55,12 @@ PLAN_TYPE_SUGGESTIONS = {
     "Point-of-Service": ("Choose POS if you want the cost savings of an HMO but want the option to go out-of-network.")
 }
 
+DEDUCTIBLE_BINS = [0, 1000, 2000, 3000, np.inf]
+DEDUCTIBLE_LABELS = ['Low', 'Moderate', 'High', 'Too High']
+
+def get_deductible_category(deductible_value):
+    return pd.cut(pd.Series([deductible_value]), bins=DEDUCTIBLE_BINS, labels=DEDUCTIBLE_LABELS, right=False).iloc[0]
+
 st.header("Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -147,6 +153,8 @@ with col18:
     st.subheader(" ")
 
     deductible = st.number_input("Deductible", min_value=0, max_value=5000, value=500)
+    deductible_category = get_deductible_category(deductible)
+    st.text_input("Deductible Level (Auto-calculated)", value=str(deductible_category), disabled=True)
     copay = st.number_input("Copay", min_value=0, max_value=100, value=20)
     policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=1)
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
@@ -201,4 +209,5 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
