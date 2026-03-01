@@ -152,7 +152,7 @@ with col17:
 with col18:
     st.subheader(" ")
 
-    deductible = st.number_input("Deductible", min_value=0, max_value=5000, value=500)
+    deductible = st.number_input("Deductible", min_value=0, max_value=10000, value=500)
     deductible_category = get_deductible_category(deductible)
     st.text_input("Deductible Level (Auto-calculated)", value=str(deductible_category), disabled=True)
     copay = st.number_input("Copay", min_value=0, max_value=100, value=20)
@@ -209,6 +209,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
