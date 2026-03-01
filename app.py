@@ -86,6 +86,7 @@ with col2:
     employment_status = st.selectbox("Employment Status", ['Employed', 'Self-employed', 'Retired', 'Unemployed'])
     region = st.selectbox("Geographical Region", ['North', 'Central', 'West', 'East', 'South'])
     urban_rural = st.selectbox("Area", ['Suburban', 'Urban', 'Rural'])
+    alcohol_freq = st.selectbox("Alcohol Consumption", ['Never', 'Weekly', 'Daily', 'Occasional'])
 
 # ================= HEALTH METRICS (COL 3) =================
 
@@ -96,7 +97,6 @@ with col3:
     bmi_group = get_bmi_group(bmi)
     st.text_input("BMI Group (Auto-calculated)", value=str(bmi_group), disabled=True)
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
-    alcohol_freq = st.selectbox("Alcohol Consumption", ['Never', 'Weekly', 'Daily', 'Occasional'])
     systolic_bp = st.slider("Systolic BP", 60, 260, 120)
     diastolic_bp = st.slider("Diastolic BP", min_value=40, max_value=systolic_bp - 10, value=min(80, systolic_bp - 10))
     bp_category = get_bp_category(systolic_bp, diastolic_bp)
@@ -208,6 +208,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
