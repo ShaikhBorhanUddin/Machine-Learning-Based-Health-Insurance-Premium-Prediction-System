@@ -49,22 +49,10 @@ def get_annual_medical_cost_category(cost_value):
     return pd.cut(pd.Series([cost_value]), bins=ANNUAL_MEDICAL_COST_BINS, labels=ANNUAL_MEDICAL_COST_LABELS, right=False).iloc[0]
 
 PLAN_TYPE_SUGGESTIONS = {
-    "Health Maintenance Organization": (
-        "Choose HMO if you want the lowest monthly costs and don't mind using a "
-        "primary care doctor to manage your care."
-    ),
-    "Preferred Provider Organization": (
-        "Choose PPO if you want the freedom to see specialists without referrals "
-        "and access out-of-network care."
-    ),
-    "Exclusive Provider Organization": (
-        "Choose EPO if you want lower premiums like an HMO but don't want referrals "
-        "for specialists."
-    ),
-    "Point-of-Service": (
-        "Choose POS if you want the cost savings of an HMO but want the option to "
-        "go out-of-network."
-    )
+    "Health Maintenance Organization": ("Choose HMO if you want the lowest monthly costs and don't mind using a primary care doctor to manage your care."),
+    "Preferred Provider Organization": ("Choose PPO if you want the freedom to see specialists without referrals and access out-of-network care."),
+    "Exclusive Provider Organization": ("Choose EPO if you want lower premiums like an HMO but don't want referrals for specialists."),
+    "Point-of-Service": ("Choose POS if you want the cost savings of an HMO but want the option to go out-of-network.")
 }
 
 st.header("Personal & Health Details")
@@ -213,3 +201,4 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
