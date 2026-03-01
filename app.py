@@ -139,12 +139,12 @@ with col16:
     asthma = st.selectbox("Asthma", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     copd = st.selectbox("COPD", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     cardiovascular_disease = st.selectbox("Cardiovascular Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    
+    kidney_disease = st.selectbox("Kidney Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+
 with col17:
     st.subheader(" ")
    
     cancer_history = st.selectbox("Cancer History", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    kidney_disease = st.selectbox("Kidney Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     liver_disease = st.selectbox("Liver Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     arthritis = st.selectbox("Arthritis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
@@ -157,11 +157,10 @@ with col18:
     deductible_category = get_deductible_category(deductible)
     st.text_input("Deductible Level (Auto-calculated)", value=str(deductible_category), disabled=True)
     copay = st.slider("Copay", min_value=0, max_value=100, value=20)
-    policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=1)
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
     plan_suggestion = PLAN_TYPE_SUGGESTIONS.get(plan_type, "")
     st.text_area("Plan Type Explanation (Auto-generated)", value=plan_suggestion, disabled=True, height=100)
-
+    policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=1)
 
 if st.button("Predict Annual Premium", type="primary"):
     # Create a DataFrame from inputs, ensuring correct column order and dtypes
@@ -209,6 +208,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
