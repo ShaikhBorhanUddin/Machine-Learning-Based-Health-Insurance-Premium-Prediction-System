@@ -85,6 +85,9 @@ with c3:
     ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
     ldl_category = get_ldl_category(ldl) 
     st.text_input("LDL Category (Auto-calculated)", value=str(ldl_category), disabled=True)
+    hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f") 
+    hba1c_category = get_hba1c_category(hba1c) 
+    st.text_input("HbA1c Category (Auto-calculated)", value=str(hba1c_category), disabled=True)
 
 with c4:
     bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
@@ -178,5 +181,6 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
