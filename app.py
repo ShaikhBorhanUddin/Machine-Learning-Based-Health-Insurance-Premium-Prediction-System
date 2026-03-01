@@ -4,7 +4,7 @@ import joblib
 import numpy as np
 
 # Load the trained model
-# Assuming the model file 'xgboost_model_cpu.pkl' is in the same directory as app.py
+
 try:
     model = joblib.load('Models/xgboost_model_cpu.pkl')
 except FileNotFoundError:
@@ -15,7 +15,6 @@ st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="wid
 st.title("🏥 Medical Insurance Premium Prediction")
 st.markdown("Enter the details below to predict the annual medical insurance premium.")
 
-# BMI bins (same as training)
 BMI_BINS = [0, 18.5, 25, 30, 35, 40, float('inf')]
 BMI_LABELS = ['Underweight', 'Normal', 'Overweight', 'Obese I', 'Obese II', 'Obese III']
 def get_bmi_group(bmi_value):
@@ -35,21 +34,26 @@ def get_bp_category(systolic_bp, diastolic_bp):
 
 LDL_BINS = [0, 100, 130, 160, 190, np.inf]
 LDL_LABELS = ['Optimal', 'Near Optimal', 'Borderline High', 'High', 'Very High']
-
 def get_ldl_category(ldl_value):
     return pd.cut(pd.Series([ldl_value]), bins=LDL_BINS, labels=LDL_LABELS, right=False).iloc[0]
 
 HBA1C_BINS = [0, 5.7, 6.5, np.inf]
 HBA1C_LABELS = ['Normal', 'Prediabetes', 'Diabetes']
-
 def get_hba1c_category(hba1c_value):
     return pd.cut(pd.Series([hba1c_value]), bins=HBA1C_BINS, labels=HBA1C_LABELS, right=False).iloc[0]
+
+ANNUAL_MEDICAL_COST_BINS = [0, 500, 2000, 5000, 10000, np.inf]
+ANNUAL_MEDICAL_COST_LABELS = ['Very Low', 'Low', 'Medium', 'High', 'Very High']
+
+def get_annual_medical_cost_category(cost_value):
+    return pd.cut(pd.Series([cost_value]), bins=ANNUAL_MEDICAL_COST_BINS, labels=ANNUAL_MEDICAL_COST_LABELS, right=False).iloc[0]
     
 st.header("Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
 
 # ================= PERSONAL INFO (COL 1) =================
+
 with col1:
     st.subheader(" ")
 
@@ -60,6 +64,7 @@ with col1:
     dependents = st.slider("Dependents", 0, 9, 1)
 
 # ================= PERSONAL INFO (COL 2) =================
+
 with col2:
     st.subheader(" ")
 
@@ -69,8 +74,8 @@ with col2:
     region = st.selectbox("Geographical Region", ['North', 'Central', 'West', 'East', 'South'])
     urban_rural = st.selectbox("Area", ['Suburban', 'Urban', 'Rural'])
 
-
 # ================= HEALTH METRICS (COL 3) =================
+
 with col3:
     st.subheader(" ")
 
@@ -85,6 +90,7 @@ with col3:
     st.text_input("Blood Pressure Category (Auto-calculated)", value=bp_category, disabled=True)
     
 # ================= HEALTH METRICS (COL 4) =================
+
 with col4:
     st.subheader(" ")
 
@@ -95,9 +101,13 @@ with col4:
     hba1c_category = get_hba1c_category(hba1c)
     st.text_input("HbA1c Category (Auto-calculated)", value=str(hba1c_category), disabled=True)
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
+    annual_medical_cost_category = get_annual_medical_cost_category(annual_medical_cost)
+    st.text_input("Annual Medical Cost Category (Auto-calculated)", value=str(annual_medical_cost_category), disabled=True)
     
 st.header("Medical History & Policy Details")
+
 col5, col16, col17, col18 = st.columns(4)
+
 with col5:
     st.subheader(" ")
 
@@ -107,6 +117,7 @@ with col5:
     days_hospitalized_last_3yrs = st.slider("Days Hospitalized Last 3 Years", min_value=0, max_value=30, value=0)
     hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     diabetes = st.selectbox("Diabetes", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+
 with col16:
     st.subheader(" ")
 
@@ -115,6 +126,7 @@ with col16:
     cardiovascular_disease = st.selectbox("Cardiovascular Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     cancer_history = st.selectbox("Cancer History", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     kidney_disease = st.selectbox("Kidney Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+
 with col17:
     st.subheader(" ")
 
@@ -123,6 +135,7 @@ with col17:
     mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     medication_count = st.number_input("Medication Count", min_value=0, max_value=10, value=1)
     had_major_procedure = st.selectbox("Had Major Procedure", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+
 with col18:
     st.subheader(" ")
 
@@ -179,6 +192,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
