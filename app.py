@@ -47,7 +47,26 @@ ANNUAL_MEDICAL_COST_LABELS = ['Very Low', 'Low', 'Medium', 'High', 'Very High']
 
 def get_annual_medical_cost_category(cost_value):
     return pd.cut(pd.Series([cost_value]), bins=ANNUAL_MEDICAL_COST_BINS, labels=ANNUAL_MEDICAL_COST_LABELS, right=False).iloc[0]
-    
+
+PLAN_TYPE_SUGGESTIONS = {
+    "Health Maintenance Organization": (
+        "Choose HMO if you want the lowest monthly costs and don't mind using a "
+        "primary care doctor to manage your care."
+    ),
+    "Preferred Provider Organization": (
+        "Choose PPO if you want the freedom to see specialists without referrals "
+        "and access out-of-network care."
+    ),
+    "Exclusive Provider Organization": (
+        "Choose EPO if you want lower premiums like an HMO but don't want referrals "
+        "for specialists."
+    ),
+    "Point-of-Service": (
+        "Choose POS if you want the cost savings of an HMO but want the option to "
+        "go out-of-network."
+    )
+}
+
 st.header("Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -143,6 +162,8 @@ with col18:
     copay = st.number_input("Copay", min_value=0, max_value=100, value=20)
     policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=1)
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
+    plan_suggestion = PLAN_TYPE_SUGGESTIONS.get(plan_type, "")
+    st.text_input("Plan Type Explanation (Auto-generated)", value=plan_suggestion, disabled=True)
     network_tier = st.selectbox("Network Tier", options=['Platinum', 'Gold', 'Silver', 'Bronze'])
 
 
@@ -192,6 +213,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
