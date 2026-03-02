@@ -98,7 +98,7 @@ with col1:
             padding:10px;
             border-radius:6px;
             font-weight:600;
-            text-align:center;
+            text-align:left;
             color:#000;
         ">
             {age_category}
@@ -239,6 +239,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
