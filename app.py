@@ -92,7 +92,7 @@ with col2:
     income = st.number_input("Yearly Income", 10000, 10000000, 50000)
     employment_status = st.selectbox("Employment Status", ['Employed', 'Self-employed', 'Retired', 'Unemployed'])
     region = st.selectbox("Geographical Region", ['North', 'Central', 'West', 'East', 'South'])
-    urban_rural = st.selectbox("Area", ['Suburban', 'Urban', 'Rural'])
+    urban_rural = st.selectbox("Residential Area", ['Suburban', 'Urban', 'Rural'])
     alcohol_freq = st.selectbox("Alcohol Consumption", ['Never', 'Weekly', 'Daily', 'Occasional'])
 
 # ================= HEALTH METRICS (COL 3) =================
@@ -209,6 +209,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
