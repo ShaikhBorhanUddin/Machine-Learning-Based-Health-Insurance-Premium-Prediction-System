@@ -54,6 +54,15 @@ def get_bp_category(systolic_bp, diastolic_bp):
     elif systolic_bp >= 140 or diastolic_bp >= 90:
         return "Hypertension Stage 2"
 
+def bp_category_color(bp_category):
+    return {
+        "Low Blood Pressure": "#bbdefb",        # light blue
+        "Normal": "#c8e6c9",                    # green
+        "Elevated": "#fff9c4",                  # yellow
+        "Hypertension Stage 1": "#ffcc80",      # orange
+        "Hypertension Stage 2": "#ef9a9a"       # red
+    }.get(str(bp_category), "#e0e0e0")
+    
 LDL_BINS = [0, 100, 130, 160, 190, np.inf]
 LDL_LABELS = ['Optimal', 'Near Optimal', 'Borderline High', 'High', 'Very High']
 def get_ldl_category(ldl_value):
@@ -181,6 +190,36 @@ with col3:
     systolic_bp = st.slider("Systolic BP", 60, 260, 120)
     diastolic_bp = st.slider("Diastolic BP", min_value=40, max_value=systolic_bp - 10, value=min(80, systolic_bp - 10))
     bp_category = get_bp_category(systolic_bp, diastolic_bp)
+    bp_color = bp_category_color(bp_category)    
+    st.markdown(
+        f"""
+        <div>
+            <label style="
+                font-size:0.85rem;
+                color:#6c757d;
+                margin-bottom:4px;
+                display:block;
+            ">
+                Blood Pressure Category (Auto-calculated)
+            </label>
+            <div style="
+                background-color:{bp_color};
+                padding:6px 10px;
+                min-height:38px;
+                border-radius:6px;
+                font-size:0.95rem;
+                font-weight:400;
+                color:#000;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            ">
+                {bp_category}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     st.text_input("Blood Pressure Category (Auto-calculated)", value=bp_category, disabled=True)
     
 # ================= HEALTH METRICS (COL 4) =================
@@ -284,6 +323,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
