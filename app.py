@@ -19,6 +19,14 @@ AGE_BINS = [18, 30, 45, 60, 75, np.inf]
 AGE_LABELS = ['Young Adult', 'Adult', 'Middle Aged', 'Senior', 'Elderly']
 def get_age_category(age_value):
     return pd.cut(pd.Series([age_value]), bins=AGE_BINS, labels=AGE_LABELS, right=False).iloc[0]
+def age_category_color(age_category):
+    return {
+        "Young Adult": "#a5d6a7",  # green
+        "Adult": "#81c784",        # darker green
+        "Middle Aged": "#fff59d",  # yellow
+        "Senior": "#ffcc80",       # orange
+        "Elderly": "#ef9a9a"       # red
+    }.get(age_category, "#e0e0e0")  
     
 BMI_BINS = [0, 18.5, 25, 30, 35, 40, float('inf')]
 BMI_LABELS = ['Underweight', 'Normal', 'Overweight', 'Obese I', 'Obese II', 'Obese III']
@@ -78,6 +86,24 @@ with col1:
     sex = st.selectbox("Gender", ['Male', 'Female', 'Other'])
     age = st.slider("Age", 18, 100, 30)
     age_category = get_age_category(age)
+    color = age_category_color(str(age_category))
+    st.markdown(
+    f"""
+    <div style="
+        background-color:{color};
+        padding:10px;
+        border-radius:6px;
+        font-weight:600;
+        text-align:center;
+        color:#000;
+        margin-top:5px;
+    ">
+        Age Category: {age_category}
+    </div>
+    """,
+    unsafe_allow_html=True
+    )
+
     st.text_input("Age Category (Auto-calculated)", value=str(age_category), disabled=True)
     marital_status = st.selectbox("Marital Status", ['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.slider("Household Size", 1, 10, 2)
@@ -209,6 +235,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
