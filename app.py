@@ -95,11 +95,15 @@ with col1:
         </label>
         <div style="
             background-color:{color};
-            padding:10px;
+            padding:6px 10px;
+            min-height:38px;
             border-radius:6px;
             font-weight:400;
-            text-align:left;
+            font-size:0.95rem;
             color:#000;
+            display:flex;
+            align-items:center;
+            justify-content:left;
         ">
             {age_category}
         </div>
@@ -239,6 +243,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
