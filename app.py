@@ -88,20 +88,24 @@ with col1:
     age_category = get_age_category(age)
     color = age_category_color(str(age_category))
     st.markdown(
-    f"""
-    <div style="
-        background-color:{color};
-        padding:10px;
-        border-radius:6px;
-        font-weight:600;
-        text-align:center;
-        color:#000;
-        margin-top:5px;
-    ">
-        Age Category: {age_category}
-    </div>
-    """,
-    unsafe_allow_html=True
+      f"""
+      <div>
+        <label style="font-size:0.85rem; color:#6c757d;">
+            Age Category (Auto-calculated)
+        </label>
+        <div style="
+            background-color:{color};
+            padding:10px;
+            border-radius:6px;
+            font-weight:600;
+            text-align:center;
+            color:#000;
+        ">
+            {age_category}
+        </div>
+     </div>
+     """,
+     unsafe_allow_html=True
     )
 
     st.text_input("Age Category (Auto-calculated)", value=str(age_category), disabled=True)
@@ -235,6 +239,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
