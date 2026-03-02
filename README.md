@@ -22,8 +22,6 @@
 
 ## Deployment 
 
-https://machine-learning-based-health-insurance.onrender.com 
-
 https://health-insurance-premium-prediction-system.streamlit.app/ 
 
 ## Limitations 
