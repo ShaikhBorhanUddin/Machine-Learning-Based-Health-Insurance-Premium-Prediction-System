@@ -15,6 +15,11 @@ st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="wid
 st.title("🏥 Medical Insurance Premium Prediction")
 st.markdown("Enter the details below to predict the annual medical insurance premium.")
 
+AGE_BINS = [18, 30, 45, 60, 75, np.inf]
+AGE_LABELS = ['Young Adult', 'Adult', 'Middle Aged', 'Senior', 'Elderly']
+def get_age_category(age_value):
+    return pd.cut(pd.Series([age_value]), bins=AGE_BINS, labels=AGE_LABELS, right=False).iloc[0]
+    
 BMI_BINS = [0, 18.5, 25, 30, 35, 40, float('inf')]
 BMI_LABELS = ['Underweight', 'Normal', 'Overweight', 'Obese I', 'Obese II', 'Obese III']
 def get_bmi_group(bmi_value):
@@ -72,6 +77,8 @@ with col1:
     
     sex = st.selectbox("Gender", ['Male', 'Female', 'Other'])
     age = st.slider("Age", 18, 100, 30)
+    age_category = get_age_category(age)
+    st.text_input("Age Category (Auto-calculated)", value=str(age_category), disabled=True)
     marital_status = st.selectbox("Marital Status", ['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.slider("Household Size", 1, 10, 2)
     dependents = st.slider("Dependents", 0, 9, 1)
@@ -202,6 +209,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
