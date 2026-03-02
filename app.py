@@ -32,6 +32,15 @@ BMI_BINS = [0, 18.5, 25, 30, 35, 40, float('inf')]
 BMI_LABELS = ['Underweight', 'Normal', 'Overweight', 'Obese I', 'Obese II', 'Obese III']
 def get_bmi_group(bmi_value):
     return pd.cut(pd.Series([bmi_value]), bins=BMI_BINS, labels=BMI_LABELS, right=False).iloc[0]
+def bmi_group_color(bmi_group):
+    return {
+        "Underweight": "#bbdefb",   # light blue
+        "Normal": "#c8e6c9",        # green
+        "Overweight": "#fff9c4",    # yellow
+        "Obese I": "#ffcc80",       # orange
+        "Obese II": "#ffab91",      # darker orange
+        "Obese III": "#ef9a9a"      # red
+    }.get(str(bmi_group), "#e0e0e0")
 
 def get_bp_category(systolic_bp, diastolic_bp):
     if systolic_bp < 90 or diastolic_bp < 60:
@@ -136,6 +145,38 @@ with col3:
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
     bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
     bmi_group = get_bmi_group(bmi)
+    bmi_group = get_bmi_group(bmi)
+    bmi_color = bmi_group_color(bmi_group)
+
+    st.markdown(
+        f"""
+        <div>
+            <label style="
+                font-size:0.85rem;
+                color:#6c757d;
+                margin-bottom:4px;
+                display:block;
+            ">
+                BMI Group (Auto-calculated)
+            </label>
+            <div style="
+                background-color:{bmi_color};
+                padding:6px 10px;
+                min-height:38px;
+                border-radius:6px;
+                font-size:0.95rem;
+                font-weight:400;
+                color:#000;
+                display:flex;
+                align-items:center;
+                justify-content:left;
+            ">
+                {bmi_group}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     st.text_input("BMI Group (Auto-calculated)", value=str(bmi_group), disabled=True)
     systolic_bp = st.slider("Systolic BP", 60, 260, 120)
     diastolic_bp = st.slider("Diastolic BP", min_value=40, max_value=systolic_bp - 10, value=min(80, systolic_bp - 10))
@@ -243,6 +284,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
