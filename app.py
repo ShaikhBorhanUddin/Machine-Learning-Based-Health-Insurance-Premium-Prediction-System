@@ -166,7 +166,7 @@ with col18:
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
     plan_suggestion = PLAN_TYPE_SUGGESTIONS.get(plan_type, "")
     st.text_area("Plan Type Explanation (Auto-generated)", value=plan_suggestion, disabled=True, height=100)
-    policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=1)
+    policy_term_years = st.slider("Policy Term (Years)", min_value=1, max_value=10, value=4)
 
 if st.button("Predict Annual Premium", type="primary"):
     # Create a DataFrame from inputs, ensuring correct column order and dtypes
@@ -209,6 +209,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
