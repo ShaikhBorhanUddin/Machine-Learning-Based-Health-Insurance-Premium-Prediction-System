@@ -110,10 +110,16 @@ PLAN_TYPE_SUGGESTIONS = {
 
 DEDUCTIBLE_BINS = [0, 1000, 2000, 3000, np.inf]
 DEDUCTIBLE_LABELS = ['Low', 'Moderate', 'High', 'Too High']
-
 def get_deductible_category(deductible_value):
     return pd.cut(pd.Series([deductible_value]), bins=DEDUCTIBLE_BINS, labels=DEDUCTIBLE_LABELS, right=False).iloc[0]
-
+def deductible_category_color(deductible_category):
+    return {
+        "Low": "#c8e6c9",       # green
+        "Moderate": "#fff9c4",  # yellow
+        "High": "#ffcc80",      # orange
+        "Too High": "#ef9a9a"   # red
+    }.get(str(deductible_category), "#e0e0e0")
+    
 st.header("Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -384,7 +390,37 @@ with col18:
 
     deductible = st.number_input("Deductible", min_value=0, max_value=10000, value=500)
     deductible_category = get_deductible_category(deductible)
-    st.text_input("Deductible Level (Auto-calculated)", value=str(deductible_category), disabled=True)
+    deductible_color = deductible_category_color(deductible_category)
+    st.markdown(
+        f"""
+        <div>
+            <label style="
+                font-size:0.85rem;
+                color:#6c757d;
+                margin-bottom:4px;
+                display:block;
+            ">
+                Deductible Level (Auto-calculated)
+            </label>
+            <div style="
+                background-color:{deductible_color};
+                padding:6px 10px;
+                min-height:38px;
+                border-radius:6px;
+                font-size:0.95rem;
+                font-weight:400;
+                color:#000;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            ">
+                {deductible_category}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
     copay = st.slider("Copay", min_value=0, max_value=100, value=20)
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
     plan_suggestion = PLAN_TYPE_SUGGESTIONS.get(plan_type, "")
@@ -432,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
