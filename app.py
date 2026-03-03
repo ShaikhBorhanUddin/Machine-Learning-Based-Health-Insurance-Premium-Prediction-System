@@ -238,7 +238,7 @@ with col3:
                 color:#000;
                 display:flex;
                 align-items:center;
-                justify-content:center;
+                justify-content:left;
             ">
                 {bp_category}
             </div>
@@ -276,7 +276,7 @@ with col4:
                 color:#000;
                 display:flex;
                 align-items:center;
-                justify-content:center;
+                justify-content:left;
             ">
                 {ldl_category}
             </div>
@@ -309,7 +309,7 @@ with col4:
                 color:#000;
                 display:flex;
                 align-items:center;
-                justify-content:center;
+                justify-content:left;
             ">
                 {hba1c_category}
             </div>
@@ -343,7 +343,7 @@ with col4:
                 color:#000;
                 display:flex;
                 align-items:center;
-                justify-content:center;
+                justify-content:left;
             ">
                 {annual_medical_cost_category}
             </div>
@@ -412,7 +412,7 @@ with col18:
                 color:#000;
                 display:flex;
                 align-items:center;
-                justify-content:center;
+                justify-content:left;
             ">
                 {deductible_category}
             </div>
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
