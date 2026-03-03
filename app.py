@@ -179,7 +179,7 @@ with col2:
 with col3:
     st.subheader(" ")
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
-    bmi = st.slider("Body Mass Index (BMI)", 12.0, 50.0, 25.0, format="%.1f")
+    bmi = st.slider("Body Mass Index (BMI)", 12.0, 50.0, 20.0, format="%.1f")
     bmi_group = get_bmi_group(bmi)
     bmi_color = bmi_group_color(bmi_group)
 
@@ -318,7 +318,7 @@ with col4:
         unsafe_allow_html=True
     )
 
-    annual_medical_cost = st.number_input("Last Year’s Medical Expenses ($)", min_value=0.0, value=2000.0, format="%.2f")
+    annual_medical_cost = st.number_input("Last Year’s Medical Expenses ($)", min_value=0.0, value=1000.0, format="%.2f")
     annual_medical_cost_category = get_annual_medical_cost_category(annual_medical_cost)
     annual_cost_color = annual_medical_cost_category_color(annual_medical_cost_category)
 
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
