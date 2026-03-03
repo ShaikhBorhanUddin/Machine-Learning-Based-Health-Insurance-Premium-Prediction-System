@@ -116,6 +116,7 @@ with col1:
     st.subheader(" ")
     
     sex = st.selectbox("Gender", ['Male', 'Female', 'Other'])
+    marital_status = st.selectbox("Marital Status", ['Married', 'Divorced', 'Single', 'Widowed'])
     age = st.slider("Age", 18, 100, 30)
     age_category = get_age_category(age)
     color = age_category_color(str(age_category))
@@ -144,7 +145,6 @@ with col1:
      unsafe_allow_html=True
     )
 
-    marital_status = st.selectbox("Marital Status", ['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.slider("Household Size", 1, 10, 2)
     dependents = st.slider("Dependents", 0, 9, 1)
 
@@ -394,6 +394,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
