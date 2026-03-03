@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/🗂️Dataset-Kaggle-blueviolet" alt="Dataset: Health Insurance">
   <img src="https://img.shields.io/badge/⚙️Runtime-CPU-blue" alt="Runtime"> 
   <img src="https://img.shields.io/badge/📊%20Visualization-Matplotlib | Seaborn | SHAP-yellow" alt="Visualization & Explainability">
-  <img src="https://img.shields.io/badge/UI-Streamlit | HTML | CSS-purple" alt="UI Stack">
+  <img src="https://img.shields.io/badge/🎨UI-Streamlit | HTML | CSS-purple" alt="UI Stack">
   <img src="https://img.shields.io/badge/Deployment-Streamlit-orange?logo=streamlit" alt="Deployment: Streamlit">
   <img src="https://img.shields.io/badge/Version%20Control-Git-orange?logo=git" alt="Git">
   <img src="https://img.shields.io/badge/Host-GitHub-green?logo=github" alt="GitHub">
