@@ -192,7 +192,7 @@ with col3:
                 margin-bottom:4px;
                 display:block;
             ">
-                BMI Group (Auto-calculated)
+                BMI Category (Auto-calculated)
             </label>
             <div style="
                 background-color:{bmi_color};
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
