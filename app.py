@@ -67,7 +67,15 @@ LDL_BINS = [0, 100, 130, 160, 190, np.inf]
 LDL_LABELS = ['Optimal', 'Near Optimal', 'Borderline High', 'High', 'Very High']
 def get_ldl_category(ldl_value):
     return pd.cut(pd.Series([ldl_value]), bins=LDL_BINS, labels=LDL_LABELS, right=False).iloc[0]
-
+def ldl_category_color(ldl_category):
+    return {
+        "Optimal": "#c8e6c9",          # green
+        "Near Optimal": "#e6ee9c",     # light yellow-green
+        "Borderline High": "#fff9c4",  # yellow
+        "High": "#ffcc80",             # orange
+        "Very High": "#ef9a9a"         # red
+    }.get(str(ldl_category), "#e0e0e0")
+    
 HBA1C_BINS = [0, 5.7, 6.5, np.inf]
 HBA1C_LABELS = ['Normal', 'Prediabetes', 'Diabetes']
 def get_hba1c_category(hba1c_value):
@@ -229,6 +237,36 @@ with col4:
 
     ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
     ldl_category = get_ldl_category(ldl)
+    ldl_color = ldl_category_color(ldl_category)    
+    st.markdown(
+        f"""
+        <div>
+            <label style="
+                font-size:0.85rem;
+                color:#6c757d;
+                margin-bottom:4px;
+                display:block;
+            ">
+                LDL Category (Auto-calculated)
+            </label>
+            <div style="
+                background-color:{ldl_color};
+                padding:6px 10px;
+                min-height:38px;
+                border-radius:6px;
+                font-size:0.95rem;
+                font-weight:400;
+                color:#000;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            ">
+                {ldl_category}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     st.text_input("LDL Category (Auto-calculated)", value=str(ldl_category), disabled=True)
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
     hba1c_category = get_hba1c_category(hba1c)
@@ -323,6 +361,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
