@@ -284,7 +284,7 @@ with col4:
         """,
         unsafe_allow_html=True
     )
-    hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
+    hba1c = st.number_input("Blood Sugar (HbA1c)", min_value=0.0, value=5.5, format="%.2f")
     hba1c_category = get_hba1c_category(hba1c)
     hba1c_color = hba1c_category_color(hba1c_category)
 
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
