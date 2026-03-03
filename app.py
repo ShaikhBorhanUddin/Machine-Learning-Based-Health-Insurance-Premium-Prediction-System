@@ -136,7 +136,7 @@ with col1:
     color = age_category_color(str(age_category))
     st.markdown(
       f"""
-      <div style="margin-bottom:12px;">
+      <div style="margin-bottom:8px;">
         <label style="font-size:0.85rem; color:#6c757d; margin-bottom:4px;">
             Age Category (Auto-calculated)
         </label>
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
