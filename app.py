@@ -318,7 +318,7 @@ with col4:
         unsafe_allow_html=True
     )
 
-    annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
+    annual_medical_cost = st.number_input("Last Year’s Medical Expenses ($)", min_value=0.0, value=2000.0, format="%.2f")
     annual_medical_cost_category = get_annual_medical_cost_category(annual_medical_cost)
     annual_cost_color = annual_medical_cost_category_color(annual_medical_cost_category)
 
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
