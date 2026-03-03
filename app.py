@@ -421,7 +421,7 @@ with col18:
         unsafe_allow_html=True
     )
 
-    copay = st.slider("Copay", min_value=0, max_value=100, value=20)
+    copay = st.slider("Copay ($)", min_value=0, max_value=100, value=20, help="Your payment for a medical visit before insurance covers the rest.")
     plan_type = st.selectbox("Plan Type", options=['Preferred Provider Organization', 'Point-of-Service', 'Health Maintenance Organization', 'Exclusive Provider Organization'])
     plan_suggestion = PLAN_TYPE_SUGGESTIONS.get(plan_type, "")
     st.text_area("Plan Type Explanation (Auto-generated)", value=plan_suggestion, disabled=True, height=100)
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
