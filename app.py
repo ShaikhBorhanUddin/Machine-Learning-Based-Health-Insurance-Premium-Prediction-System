@@ -144,7 +144,6 @@ with col1:
      unsafe_allow_html=True
     )
 
-    st.text_input("Age Category (Auto-calculated)", value=str(age_category), disabled=True)
     marital_status = st.selectbox("Marital Status", ['Married', 'Divorced', 'Single', 'Widowed'])
     household_size = st.slider("Household Size", 1, 10, 2)
     dependents = st.slider("Dependents", 0, 9, 1)
@@ -167,7 +166,6 @@ with col3:
     st.subheader(" ")
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
     bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
-    bmi_group = get_bmi_group(bmi)
     bmi_group = get_bmi_group(bmi)
     bmi_color = bmi_group_color(bmi_group)
 
@@ -200,7 +198,7 @@ with col3:
         """,
         unsafe_allow_html=True
     )
-    st.text_input("BMI Group (Auto-calculated)", value=str(bmi_group), disabled=True)
+    
     systolic_bp = st.slider("Systolic BP", 60, 260, 120)
     diastolic_bp = st.slider("Diastolic BP", min_value=40, max_value=systolic_bp - 10, value=min(80, systolic_bp - 10))
     bp_category = get_bp_category(systolic_bp, diastolic_bp)
@@ -396,6 +394,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
