@@ -179,7 +179,7 @@ with col2:
 with col3:
     st.subheader(" ")
     smoker = st.selectbox("Smoking Habit", ['Never', 'Former', 'Current'])
-    bmi = st.slider("BMI", 12.0, 50.0, 25.0, format="%.1f")
+    bmi = st.slider("Body Mass Index (BMI)", 12.0, 50.0, 25.0, format="%.1f")
     bmi_group = get_bmi_group(bmi)
     bmi_color = bmi_group_color(bmi_group)
 
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
