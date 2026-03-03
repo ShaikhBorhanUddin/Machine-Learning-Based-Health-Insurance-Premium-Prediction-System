@@ -159,7 +159,7 @@ with col1:
      unsafe_allow_html=True
     )
 
-    household_size = st.slider("Home Size (Rooms)", 1, 10, 2)
+    household_size = st.slider("House Size (Number of Rooms)", 1, 10, 2)
     dependents = st.slider("Dependents", 0, 9, 1)
 
 # ================= PERSONAL INFO (COL 2) =================
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
