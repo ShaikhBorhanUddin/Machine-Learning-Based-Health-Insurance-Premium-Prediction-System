@@ -120,7 +120,7 @@ def deductible_category_color(deductible_category):
         "Too High": "#ef9a9a"   # red
     }.get(str(deductible_category), "#e0e0e0")
     
-st.header("Personal & Health Details")
+st.header("🩺 Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -352,7 +352,7 @@ with col4:
         unsafe_allow_html=True
     )
    
-st.header("Medical History & Policy Details")
+st.header("📋 Medical History & Policy Details")
 
 col5, col16, col17, col18 = st.columns(4)
 
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
