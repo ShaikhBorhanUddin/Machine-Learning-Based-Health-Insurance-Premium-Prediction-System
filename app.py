@@ -80,6 +80,12 @@ HBA1C_BINS = [0, 5.7, 6.5, np.inf]
 HBA1C_LABELS = ['Normal', 'Prediabetes', 'Diabetes']
 def get_hba1c_category(hba1c_value):
     return pd.cut(pd.Series([hba1c_value]), bins=HBA1C_BINS, labels=HBA1C_LABELS, right=False).iloc[0]
+def hba1c_category_color(hba1c_category):
+    return {
+        "Normal": "#c8e6c9",       # green
+        "Prediabetes": "#fff9c4",  # yellow
+        "Diabetes": "#ef9a9a"      # red
+    }.get(str(hba1c_category), "#e0e0e0")
 
 ANNUAL_MEDICAL_COST_BINS = [0, 500, 2000, 5000, 10000, np.inf]
 ANNUAL_MEDICAL_COST_LABELS = ['Very Low', 'Low', 'Medium', 'High', 'Very High']
@@ -270,6 +276,38 @@ with col4:
     st.text_input("LDL Category (Auto-calculated)", value=str(ldl_category), disabled=True)
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
     hba1c_category = get_hba1c_category(hba1c)
+    hba1c_color = hba1c_category_color(hba1c_category)
+    st.markdown(
+        f"""
+        <div>
+            <label style="
+                font-size:0.85rem;
+                color:#6c757d;
+                margin-bottom:4px;
+                display:block;
+            ">
+                HbA1c Category (Auto-calculated)
+            </label>
+            <div style="
+                background-color:{hba1c_color};
+                padding:6px 10px;
+                min-height:38px;
+                border-radius:6px;
+                font-size:0.95rem;
+                font-weight:400;
+                color:#000;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            ">
+                {hba1c_category}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.text_input("HbA1c Category (Auto-calculated)", value=str(hba1c_category), disabled=True)
     st.text_input("HbA1c Category (Auto-calculated)", value=str(hba1c_category), disabled=True)
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     annual_medical_cost_category = get_annual_medical_cost_category(annual_medical_cost)
@@ -361,6 +399,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
