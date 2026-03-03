@@ -137,7 +137,7 @@ with col1:
     st.markdown(
       f"""
       <div>
-        <label style="font-size:0.85rem; color:#6c757d; margin-top:4px; margin-bottom:4px;">
+        <label style="font-size:0.85rem; color:#6c757d; margin-bottom:4px;">
             Age Category (Auto-calculated)
         </label>
         <div style="
@@ -190,7 +190,6 @@ with col3:
                 font-size:0.85rem;
                 color:#6c757d;
                 margin-bottom:4px;
-                margin-top:4px;
                 display:block;
             ">
                 BMI Group (Auto-calculated)
@@ -224,7 +223,6 @@ with col3:
             <label style="
                 font-size:0.85rem;
                 color:#6c757d;
-                margin-top:4px;
                 margin-bottom:4px;
                 display:block;
             ">
@@ -263,7 +261,6 @@ with col4:
             <label style="
                 font-size:0.85rem;
                 color:#6c757d;
-                margin-top:4px;
                 margin-bottom:4px;
                 display:block;
             ">
@@ -297,7 +294,6 @@ with col4:
             <label style="
                 font-size:0.85rem;
                 color:#6c757d;
-                margin-top:4px;
                 margin-bottom:4px;
                 display:block;
             ">
@@ -332,7 +328,6 @@ with col4:
             <label style="
                 font-size:0.85rem;
                 color:#6c757d;
-                margin-top:4px;
                 margin-bottom:4px;
                 display:block;
             ">
@@ -402,7 +397,6 @@ with col18:
             <label style="
                 font-size:0.85rem;
                 color:#6c757d;
-                margin-top:4px;
                 margin-bottom:4px;
                 display:block;
             ">
@@ -474,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
