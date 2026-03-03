@@ -359,12 +359,12 @@ col5, col16, col17, col18 = st.columns(4)
 with col5:
     st.subheader(" ")
 
-    visits_last_year = st.slider("Visits Last Year", min_value=0, max_value=25, value=5)
+    visits_last_year = st.slider("Doctor Visits Last Year", min_value=0, max_value=25, value=5)
     hospitalizations_last_3yrs_options = {0: "Never", 1: "Last Year", 2: "Last 2 Years", 3: "Every Year"}
     hospitalizations_last_3yrs = st.selectbox("Hospitalizations in Last 3 Years", options=list(hospitalizations_last_3yrs_options.keys()), format_func=lambda x: hospitalizations_last_3yrs_options[x])
     days_hospitalized_last_3yrs = st.slider("Days Hospitalized Last 3 Years", min_value=0, max_value=30, value=5)
-    medication_count = st.number_input("Medication Count", min_value=0, max_value=10, value=1)
-    had_major_procedure = st.selectbox("Had Major Procedure", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+    medication_count = st.number_input("Number of Medications", min_value=0, max_value=10, value=1)
+    had_major_procedure = st.selectbox("Previous Major Medical Procedures", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
 
 with col16:
     st.subheader(" ")
@@ -383,7 +383,7 @@ with col17:
     liver_disease = st.selectbox("Liver Disease", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     arthritis = st.selectbox("Arthritis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
     mental_health = st.selectbox("Mental Health", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-    network_tier = st.selectbox("Network Tier", options=['Platinum', 'Gold', 'Silver', 'Bronze'])
+    network_tier = st.selectbox("Insurance Plan Level", options=['Platinum', 'Gold', 'Silver', 'Bronze'])
 
 with col18:
     st.subheader(" ")
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
