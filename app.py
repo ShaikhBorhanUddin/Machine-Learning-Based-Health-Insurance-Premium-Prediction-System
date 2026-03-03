@@ -345,9 +345,7 @@ with col4:
         """,
         unsafe_allow_html=True
     )
-
-    st.text_input("Annual Medical Cost Category (Auto-calculated)", value=str(annual_medical_cost_category), disabled=True)
-    
+   
 st.header("Medical History & Policy Details")
 
 col5, col16, col17, col18 = st.columns(4)
@@ -434,6 +432,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
