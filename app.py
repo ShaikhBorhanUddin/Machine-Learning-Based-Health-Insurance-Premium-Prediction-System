@@ -234,7 +234,6 @@ with col3:
         """,
         unsafe_allow_html=True
     )
-    st.text_input("Blood Pressure Category (Auto-calculated)", value=bp_category, disabled=True)
     
 # ================= HEALTH METRICS (COL 4) =================
 
@@ -273,7 +272,6 @@ with col4:
         """,
         unsafe_allow_html=True
     )
-    st.text_input("LDL Category (Auto-calculated)", value=str(ldl_category), disabled=True)
     hba1c = st.number_input("HbA1c", min_value=0.0, value=5.5, format="%.2f")
     hba1c_category = get_hba1c_category(hba1c)
     hba1c_color = hba1c_category_color(hba1c_category)
@@ -308,9 +306,6 @@ with col4:
         unsafe_allow_html=True
     )
 
-    st.text_input("HbA1c Category (Auto-calculated)", value=str(hba1c_category), disabled=True)
-    st.text_input("HbA1c Category (Auto-calculated)", value=str(hba1c_category), disabled=True)
-    st.text_input("HbA1c Category (Auto-calculated)", value=str(hba1c_category), disabled=True)
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     annual_medical_cost_category = get_annual_medical_cost_category(annual_medical_cost)
     st.text_input("Annual Medical Cost Category (Auto-calculated)", value=str(annual_medical_cost_category), disabled=True)
@@ -401,6 +396,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
