@@ -252,7 +252,7 @@ with col3:
 with col4:
     st.subheader(" ")
 
-    ldl = st.number_input("LDL", min_value=0.0, value=100.0, format="%.1f")
+    ldl = st.number_input("LDL Cholesterol (mg/dL)", min_value=0.0, value=100.0, format="%.1f")
     ldl_category = get_ldl_category(ldl)
     ldl_color = ldl_category_color(ldl_category)    
     st.markdown(
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
