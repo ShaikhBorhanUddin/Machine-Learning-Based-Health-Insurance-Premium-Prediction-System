@@ -1,5 +1,24 @@
 # Machine Learning–Based Health Insurance Premium Prediction System 
 
+<p align="left">
+  <img src="https://img.shields.io/badge/Made%20With-Colab-blue?logo=googlecolab&logoColor=white" alt="Made with Colab">
+  <img src="https://img.shields.io/badge/Language-Python-green?logo=python" alt="Language: Python">
+  <img src="https://img.shields.io/badge/💻Dev%20Environment-VS%20Code-blue?logo=visualstudiocode">
+  <img src="https://img.shields.io/badge/⚖️%20License-MIT-red" alt="License">
+  <img src="https://img.shields.io/badge/🐞%20Issues-None-green" alt="Issues">
+  <img src="https://img.shields.io/github/repo-size/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System?logo=github" />
+  <img src="https://img.shields.io/github/last-commit/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System" alt="Last Commit">
+  <img src="https://img.shields.io/badge/🤖%20Models-Linear%20Regression | Random%20Forest | XGBoost-red" alt="Models">
+  <img src="https://img.shields.io/badge/🗂️Dataset-Kaggle-blueviolet" alt="Dataset: Health Insurance">
+  <img src="https://img.shields.io/badge/⚙️Runtime-CPU-blue" alt="Runtime"> 
+  <img src="https://img.shields.io/badge/📊%20Visualization-Matplotlib | Seaborn-yellow" alt="Visualization">
+  <img src="https://img.shields.io/badge/Deployment-Streamlit-orange?logo=streamlit" alt="Deployment: Streamlit">
+  <img src="https://img.shields.io/badge/Version%20Control-Git-orange?logo=git" alt="Git">
+  <img src="https://img.shields.io/badge/Host-GitHub-green?logo=github" alt="GitHub">
+  <img src="https://img.shields.io/github/forks/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System?style=social" alt="Forks">
+  <img src="https://img.shields.io/badge/🏁Project-Deployed-brightgreen" alt="Status">
+</p> 
+
 ![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/title_image_new.png?raw=true) 
 
 ## Overview 
