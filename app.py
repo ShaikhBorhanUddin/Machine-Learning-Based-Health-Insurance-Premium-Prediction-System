@@ -92,7 +92,15 @@ ANNUAL_MEDICAL_COST_LABELS = ['Very Low', 'Low', 'Medium', 'High', 'Very High']
 
 def get_annual_medical_cost_category(cost_value):
     return pd.cut(pd.Series([cost_value]), bins=ANNUAL_MEDICAL_COST_BINS, labels=ANNUAL_MEDICAL_COST_LABELS, right=False).iloc[0]
-
+def annual_medical_cost_category_color(cost_category):
+    return {
+        "Very Low": "#c8e6c9",   # green
+        "Low": "#e6ee9c",        # light yellow-green
+        "Medium": "#fff9c4",     # yellow
+        "High": "#ffcc80",       # orange
+        "Very High": "#ef9a9a"   # red
+    }.get(str(cost_category), "#e0e0e0")
+    
 PLAN_TYPE_SUGGESTIONS = {
     "Health Maintenance Organization": ("Choose HMO if you want the lowest monthly costs and don't mind using a primary care doctor to manage your care."),
     "Preferred Provider Organization": ("Choose PPO if you want the freedom to see specialists without referrals and access out-of-network care."),
@@ -306,6 +314,38 @@ with col4:
 
     annual_medical_cost = st.number_input("Annual Medical Cost", min_value=0.0, value=1000.0, format="%.2f")
     annual_medical_cost_category = get_annual_medical_cost_category(annual_medical_cost)
+    annual_cost_color = annual_medical_cost_category_color(annual_medical_cost_category)
+
+    st.markdown(
+        f"""
+        <div>
+            <label style="
+                font-size:0.85rem;
+                color:#6c757d;
+                margin-bottom:4px;
+                display:block;
+            ">
+                Annual Medical Cost Category (Auto-calculated)
+            </label>
+            <div style="
+                background-color:{annual_cost_color};
+                padding:6px 10px;
+                min-height:38px;
+                border-radius:6px;
+                font-size:0.95rem;
+                font-weight:400;
+                color:#000;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            ">
+                {annual_medical_cost_category}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
     st.text_input("Annual Medical Cost Category (Auto-calculated)", value=str(annual_medical_cost_category), disabled=True)
     
 st.header("Medical History & Policy Details")
@@ -394,6 +434,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
