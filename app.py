@@ -302,7 +302,7 @@ with col4:
             ">
                 {hba1c_category}
             </div>
-        </div>
+         </div>
         """,
         unsafe_allow_html=True
     )
@@ -399,6 +399,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
