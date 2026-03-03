@@ -185,7 +185,7 @@ with col3:
 
     st.markdown(
         f"""
-        <div>
+        <div style="margin-bottom:10px;">
             <label style="
                 font-size:0.85rem;
                 color:#6c757d;
@@ -393,7 +393,7 @@ with col18:
     deductible_color = deductible_category_color(deductible_category)
     st.markdown(
         f"""
-        <div>
+        <div style="margin-bottom:12px;">
             <label style="
                 font-size:0.85rem;
                 color:#6c757d;
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
