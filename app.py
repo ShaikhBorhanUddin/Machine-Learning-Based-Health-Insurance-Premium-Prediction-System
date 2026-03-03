@@ -388,7 +388,7 @@ with col17:
 with col18:
     st.subheader(" ")
 
-    deductible = st.number_input("Deductible ($)", min_value=0, max_value=10000, value=500, help="Enter the amount you must pay out-of-pocket for medical services before your insurance starts covering costs.")
+    deductible = st.number_input("Deductible ($)", min_value=0, max_value=10000, value=500, help="Amount you pay before insurance coverage starts.")
     deductible_category = get_deductible_category(deductible)
     deductible_color = deductible_category_color(deductible_category)
     st.markdown(
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
