@@ -52,6 +52,8 @@
 
 ![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/SHAP_explanation.png?raw=true) 
 
+The SHAP force plot shows how the model arrived at a predicted annual premium of 1,022. Starting from the base value (average premium) of 581.9, the prediction was primarily increased by the individuals high annual medical cost (6,789), which the model identifies as a strong risk factor. The selected insurance plan tier also contributed to the increase, as non-Bronze plans tend to have higher premiums. This increase was partially offset by being enrolled in a Silver plan rather than a higher-tier option. Overall, the plot provides a transparent breakdown of how each feature contributed to the final prediction. 
+
 ## Deployment 
 
 https://health-insurance-premium-prediction-system.streamlit.app/ 
