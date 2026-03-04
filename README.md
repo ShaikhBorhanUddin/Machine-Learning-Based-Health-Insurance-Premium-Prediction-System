@@ -28,6 +28,8 @@
 
 ## Project Workflow 
 
+![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/workflow.png?raw=true) 
+
 ## Dataset 
 
 [Dataset](https://www.kaggle.com/datasets/mohankrishnathalla/medical-insurance-cost-prediction) 
