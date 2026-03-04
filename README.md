@@ -40,7 +40,8 @@
 
 ## Results 
 
-![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/performance_matrix.png, raw=True)
+![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/performance_matrix.png?raw=true) 
+
 ## Practical Applications 
 
 ## Explainability 
