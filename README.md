@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/🐞%20Issues-None-green" alt="Issues">
   <img src="https://img.shields.io/github/repo-size/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System?logo=github" />
   <img src="https://img.shields.io/github/last-commit/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System" alt="Last Commit">
-  <img src="https://img.shields.io/badge/🤖%20Models-Linear%20Regression | Random%20Forest | XGBoost-red" alt="Models">
+  <img src="https://img.shields.io/badge/🤖%20Models-Random%20Forest | XGBoost | ElasticNet | LightGBM-red" alt="Models">
   <img src="https://img.shields.io/badge/🗂️Dataset-Kaggle-blueviolet" alt="Dataset: Health Insurance">
   <img src="https://img.shields.io/badge/⚙️Runtime-CPU-blue" alt="Runtime"> 
   <img src="https://img.shields.io/badge/📊%20Visualization-Matplotlib | Seaborn | SHAP-yellow" alt="Visualization & Explainability">
