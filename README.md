@@ -50,11 +50,15 @@
 
 ## Explainability 
 
+![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/SHAP_explanation.png?raw=true) 
+
 ## Deployment 
 
 https://health-insurance-premium-prediction-system.streamlit.app/ 
 
 ## Limitations 
+
+![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/SHAP_feature_importance.png?raw=true) 
 
 ## Tools Used 
 
