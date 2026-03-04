@@ -59,8 +59,8 @@ The SHAP force plot shows how the model arrived at a predicted annual premium of
 https://health-insurance-premium-prediction-system.streamlit.app/ 
 
 <p align="center">
-  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/deployment_top.png" width="49%" />
-  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/deployment_down.png" width="49%" />
+  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/deployment_top.png" width="48%" />
+  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/deployment_down.png" width="50%" />
 </p> 
 
 ## Limitations 
