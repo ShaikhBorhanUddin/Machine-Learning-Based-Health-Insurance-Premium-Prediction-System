@@ -83,7 +83,7 @@ https://health-insurance-premium-prediction-system.streamlit.app/
 
 ## Limitations 
 
-![Dashboard](Assets/SHAP_feature_importance.png?raw=true) 
+![Dashboard](Assets/SHAP_feature_importance.png) 
 
 ## Tools Used 
 
