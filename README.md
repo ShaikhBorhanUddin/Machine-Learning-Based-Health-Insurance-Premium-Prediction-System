@@ -57,8 +57,8 @@
 </p> 
 
 <p align="center">
-  <img src="Assets/EDA_health_condition.png" width="50%" />
-  <img src="Assets/EDA_medication_count.png" width="49%" />
+  <img src="Assets/EDA_health_condition.png" width="52%" />
+  <img src="Assets/EDA_medication_count.png" width="47%" />
 </p> 
 
 ## Model Training 
