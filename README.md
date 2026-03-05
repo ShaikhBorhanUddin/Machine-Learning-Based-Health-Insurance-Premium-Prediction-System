@@ -68,6 +68,8 @@
   <img src="Assets/EDA_plan.png" width="56.5%" />
 </p> 
 
+![Dashboard](Assets/EDA_premium_deductible_copay.png) 
+
 ## Model Training 
 
 ## Results 
