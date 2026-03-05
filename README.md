@@ -61,6 +61,8 @@
   <img src="Assets/EDA_medication_count.png" width="48%" />
 </p> 
 
+![Dashboard](Assets/EDA_visits.png) 
+
 <p align="center">
   <img src="Assets/EDA_annual_medical_cost.png" width="42.5%" />
   <img src="Assets/EDA_plan.png" width="56.5%" />
