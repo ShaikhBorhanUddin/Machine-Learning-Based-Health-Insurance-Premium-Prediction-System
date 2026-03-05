@@ -46,8 +46,6 @@
 
 ![Dashboard](Assets/EDA_financials.png) 
 
-![Dashboard](Assets/EDA_habits.png) 
-
 <p align="center">
   <img src="Assets/EDA_habits.png" width="49%" />
   <img src="Assets/EDA_diseases.png" width="49%" />
