@@ -40,28 +40,28 @@
 
 ## Exploratory Data Analysis 
 
-![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_demographics.png?raw=true) 
+![Dashboard](Assets/EDA_demographics.png) 
 
-![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_location.png?raw=true) 
+![Dashboard](Assets/EDA_location.png) 
 
-![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_financials.png?raw=true) 
+![Dashboard](Assets/EDA_financials.png) 
 
-![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_habits.png?raw=true) 
+![Dashboard](Assets/EDA_habits.png) 
 
 <p align="center">
-  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_bp.png" width="71.7%" />
-  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_bmi.png" width="27.3%" />
+  <img src="Assets/EDA_bp.png" width="71.7%" />
+  <img src="Assets/EDA_bmi.png" width="27.3%" />
 </p> 
 
 ## Model Training 
 
 ## Results 
 
-![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/performance_matrix.png?raw=true) 
+![Dashboard](Assets/performance_matrix.png) 
 
 <p align="center">
-  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/actual_predicted_comparison.png" width="61.7%" />
-  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/model_performance_visualization.png" width="37.3%" />
+  <img src="Assets/actual_predicted_comparison.png" width="61.7%" />
+  <img src="Assets/model_performance_visualization.png" width="37.3%" />
 </p> 
 
 ## Practical Applications 
@@ -77,8 +77,8 @@ The SHAP force plot shows how the model arrived at a predicted annual premium of
 https://health-insurance-premium-prediction-system.streamlit.app/ 
 
 <p align="center">
-  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/deployment_top.png" width="48.3%" />
-  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/deployment_down.png" width="50%" />
+  <img src="Assets/deployment_top.png" width="48.3%" />
+  <img src="Assets/deployment_down.png" width="50%" />
 </p> 
 
 ## Limitations 
