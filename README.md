@@ -62,8 +62,8 @@
 </p> 
 
 <p align="center">
-  <img src="Assets/EDA_annual_medical_cost.png" width="51%" />
-  <img src="Assets/EDA_plan.png" width="48%" />
+  <img src="Assets/EDA_annual_medical_cost.png" width="44%" />
+  <img src="Assets/EDA_plan.png" width="55%" />
 </p> 
 
 ## Model Training 
