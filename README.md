@@ -48,6 +48,10 @@
 
 ![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_habits.png?raw=true) 
 
+<p align="center">
+  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_bp.png" width="61.7%" />
+  <img src="https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_bmi.png" width="37.3%" />
+</p> 
 
 ## Model Training 
 
