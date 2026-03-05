@@ -28,7 +28,7 @@
 
 ## Project Workflow 
 
-![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/workflow_corrected.png) 
+![Dashboard](Assets/workflow_corrected.png) 
 
 ## Dataset 
 
