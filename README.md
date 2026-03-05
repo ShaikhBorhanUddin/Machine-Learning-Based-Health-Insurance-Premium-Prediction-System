@@ -40,6 +40,8 @@
 
 ## Exploratory Data Analysis 
 
+![Dashboard](https://github.com/ShaikhBorhanUddin/Machine-Learning-Based-Health-Insurance-Premium-Prediction-System/blob/main/Assets/EDA_demographics.png?raw=true) 
+
 ## Model Training 
 
 ## Results 
