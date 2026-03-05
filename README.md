@@ -61,6 +61,11 @@
   <img src="Assets/EDA_medication_count.png" width="48%" />
 </p> 
 
+<p align="center">
+  <img src="Assets/EDA_annual_medical_cost.png" width="51%" />
+  <img src="Assets/EDA_plan.png" width="48%" />
+</p> 
+
 ## Model Training 
 
 ## Results 
