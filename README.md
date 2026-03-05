@@ -56,6 +56,11 @@
   <img src="Assets/EDA_bmi.png" width="27.3%" />
 </p> 
 
+<p align="center">
+  <img src="Assets/EDA_health_condition.png" width="71.7%" />
+  <img src="Assets/EDA_medication_count.png" width="27.3%" />
+</p> 
+
 ## Model Training 
 
 ## Results 
