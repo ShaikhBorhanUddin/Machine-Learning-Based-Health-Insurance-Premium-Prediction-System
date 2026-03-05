@@ -49,6 +49,11 @@
 ![Dashboard](Assets/EDA_habits.png) 
 
 <p align="center">
+  <img src="Assets/EDA_habits.png" width="49%" />
+  <img src="Assets/EDA_diseases.png" width="49%" />
+</p> 
+
+<p align="center">
   <img src="Assets/EDA_bp.png" width="71.7%" />
   <img src="Assets/EDA_bmi.png" width="27.3%" />
 </p> 
