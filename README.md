@@ -32,9 +32,9 @@ Health Insurance Premium Prediction Project
 ├── Assets/                                  # Images for project documentation
 ├── Dataset/               
 │      │                 
-│      ├── nyc_property_sales.csv      
-│      ├── PLUTO.csv                   
-│      └── cpi_index.csv 
+│      ├── medical_insurance.csv      
+│      ├── medical-insurance_cleaned.csv                   
+│      └── medical_insurance_cleaned_engineered.csv 
 ├── Models/
 │      ├── combined_location_mapping.pkl                       
 │      ├── feature_names.pkl
