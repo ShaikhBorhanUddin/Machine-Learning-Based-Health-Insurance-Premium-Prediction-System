@@ -57,6 +57,10 @@ The detailed data cleaning and feature engineering processes are discussed in th
 
 ## Data Cleaning 
 
+During the data cleaning stage, several columns were removed from the raw dataset to improve model reliability and ensure that the final features are suitable for real-world prediction scenarios. The column `person_id` was dropped because it is simply a unique identifier and does not contribute meaningful predictive information. Similarly, `provider_quality` and `risk_score` were excluded because these variables would not be available as inputs from end users of the application. In addition, the `risk_score` variable could introduce data leakage since it may already incorporate information related to the target outcome. The `monthly_premium` column was also removed because annual_premium is used as the target variable, making the monthly value redundant.
+
+Several additional variables were removed because they represent historical insurance or claims information that application users would not realistically be able to provide. These include `policy_changes_last_2yrs`, `claims_count`, `avg_claim_amount`, and `total_claims_paid`. The column `chronic_count` was also dropped because it is simply an aggregate of ten individual disease indicator columns, making it redundant. Furthermore, the procedure-related variables `proc_imaging_count`, `proc_surgery_count`, `proc_physio_count`, `proc_consult_count`, and `proc_lab_count` were removed because they are vague and may represent medical procedures that are not appropriate or practical for machine learning prediction in this context. Finally, `is_high_risk` was excluded due to the potential for data leakage, as it likely reflects information closely related to the target variable. 
+
 ## Feature Engineering 
 
 ## Exploratory Data Analysis 
