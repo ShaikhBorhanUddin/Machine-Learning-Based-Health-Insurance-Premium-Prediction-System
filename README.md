@@ -81,6 +81,14 @@ Some of these categories ('No HS', 'HS', and 'Some College') were abbreviated an
 {'No HS': 'High School Dropout', 'HS': 'High School', 'Some College': 'College'}
 ```
 
+Finally, the entries in the trem_type column were replaced with more descriptive labels. 
+
+```bash
+{'PPO': 'Preferred Provider Organization', 'POS': 'Point-of-Service', 'HMO': 'Health Maintenance Organization', 'EPO': 'Exclusive Provider Organization'}
+``` 
+
+This transformation was performed to improve the clarity and interpretability of the variable, ensuring that the category names are easier to understand during analysis and model interpretation. 
+
 ## Feature Engineering 
 
 ## Exploratory Data Analysis 
