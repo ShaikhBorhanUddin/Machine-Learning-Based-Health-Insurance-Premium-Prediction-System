@@ -87,7 +87,7 @@ Finally, the entries in the trem_type column were replaced with more descriptive
 {'PPO': 'Preferred Provider Organization', 'POS': 'Point-of-Service', 'HMO': 'Health Maintenance Organization', 'EPO': 'Exclusive Provider Organization'}
 ``` 
 
-This transformation was performed to improve the clarity and interpretability of the variable, ensuring that the category names are easier to understand during analysis and model interpretation. 
+This transformation was performed to improve the clarity and interpretability of the variable, ensuring that the category names are easier to understand during analysis and model interpretation. With these adjustments, the data cleaning stage is complete, and the dataset is now prepared for the subsequent feature engineering process. 
 
 ## Feature Engineering 
 
