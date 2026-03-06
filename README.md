@@ -59,15 +59,21 @@ Over half of the individuals are married (≈53%), while single individuals acco
   <img src="Assets/EDA_diseases.png" width="58.8%" />
 </p> 
 
+Smoking behavior shows that the majority of individuals are non-smokers, while smaller proportions are former or current smokers. Alcohol consumption patterns indicate that occasional drinking is the most common, followed by individuals who never consume alcohol, with relatively fewer reporting weekly or daily consumption. The LDL cholesterol distribution reveals that most individuals fall within the near-optimal and optimal ranges, although a noticeable portion still lies in borderline or high-risk categories. Similarly, HbA1c levels indicate that the majority of individuals are within the normal range, while smaller segments fall into the prediabetes and diabetes categories. 
+
 <p align="center">
   <img src="Assets/EDA_bp.png" width="71.7%" />
   <img src="Assets/EDA_bmi.png" width="27.3%" />
 </p> 
 
+The blood pressure scatter plot illustrates the relationship between systolic and diastolic pressure, highlighting clusters corresponding to normal, elevated, and hypertension stages. The categorized blood pressure distribution shows that normal blood pressure is the most common, followed by hypertension stage 1 and elevated blood pressure, while fewer individuals fall into low blood pressure or hypertension stage 2 categories. Body mass index (BMI) distribution indicates that overweight and normal BMI categories dominate the dataset, with smaller proportions classified as obese, underweight, or severe obesity. 
+
 <p align="center">
   <img src="Assets/EDA_health_condition.png" width="51%" />
   <img src="Assets/EDA_medication_count.png" width="48%" />
 </p> 
+
+Among reported health conditions, hypertension is the most prevalent, followed by mental health conditions, arthritis, and diabetes, while conditions such as cancer history, liver disease, and kidney disease occur less frequently. Medication usage patterns show that most individuals take zero to one medication, with the number of individuals decreasing steadily as the medication count increases, indicating that only a small fraction of the population relies on multiple medications. 
 
 ![Dashboard](Assets/EDA_visits.png) 
 
