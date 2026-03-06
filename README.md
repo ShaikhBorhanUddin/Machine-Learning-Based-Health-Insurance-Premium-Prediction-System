@@ -26,6 +26,43 @@
 
 ## Folder Structure 
 
+House Price Prediction Project
+│
+├── Assets/                                  # Images for project documentation
+├── Dataset/               
+│      ├── Raw/                  
+│      │     ├── nyc_property_sales.csv      # Not included in repository due to large size (364.5 MB)
+│      │     ├── PLUTO.csv                   # Not included in repository due to large size (292.1 MB)
+│      │     └── cpi_index.csv 
+│      ├── Cleaned/               
+│      │     ├── nyc_property_sales_cleaned.csv
+│      │     ├── PLUTO_cleaned.csv
+│      │     └── cpi_index_clean.csv
+│      └── Feature Engineered/
+│            └── sales_pluto_cpi_combined_engineered.csv
+├── Models/
+│      ├── combined_location_mapping.pkl                       
+│      ├── feature_names.pkl
+│      ├── location_coordinate_mapping.pkl
+│      ├── unique_categorical_values.pkl
+│      ├── xgboost_model.pkl
+│      ├── elastic_net_model.pkl
+│      └── rf_model.pkl                       # Not included in repository due to large size (3.66 GB)
+├── Notebooks/                                
+│      ├── property_sales_data_preprocessing.ipynb
+│      ├── PLUTO_data_preprocessing.ipynb
+│      ├── CPI_data_preprocessing.ipynb
+│      ├── EDA.ipynb
+│      ├── feature_engineering.ipynb
+│      ├── xgboost_train_test.ipynb
+│      ├── elasticnet_train_test.ipynb
+│      ├── rf_train_test.ipynb
+│      └── model_comparison.ipynb
+├── app.py                                    # Deployment code
+├── requirements.txt                          # Python dependencies for deployment
+├── README.md                                 # Project documentation
+└── Licence.md
+
 ## Project Workflow 
 
 ![Dashboard](Assets/workflow_corrected.png) 
