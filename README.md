@@ -26,6 +26,7 @@
 
 ## Folder Structure 
 
+```bash
 House Price Prediction Project
 │
 ├── Assets/                                  # Images for project documentation
@@ -62,6 +63,7 @@ House Price Prediction Project
 ├── requirements.txt                          # Python dependencies for deployment
 ├── README.md                                 # Project documentation
 └── Licence.md
+```
 
 ## Project Workflow 
 
