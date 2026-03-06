@@ -48,6 +48,8 @@ The EDA begins with an examination of the demographic characteristics of insuran
 
 ![Dashboard](Assets/EDA_location.png) 
 
+Regional distribution shows that the South region has the highest representation, followed by the North and East, while the Central region contributes the smallest share. In terms of residential classification, the majority of individuals reside in urban areas (≈60%), with smaller proportions living in suburban (≈25%) and rural areas (≈15%), suggesting that the dataset is somewhat urban-centric. Additionally, the dependents analysis shows that most individuals have 0–1 dependents, with the frequency decreasing significantly as the number of dependents increases. 
+
 ![Dashboard](Assets/EDA_financials.png) 
 
 <p align="center">
