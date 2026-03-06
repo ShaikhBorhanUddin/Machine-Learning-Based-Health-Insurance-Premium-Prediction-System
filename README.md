@@ -26,6 +26,8 @@
 
 ## Folder Structure 
 
+All code, Python notebooks, trained models, and images used in this project are organized and stored in this repository according to the following folder structure: 
+
 ```bash
 Health Insurance Premium Prediction Project
 │
