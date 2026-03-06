@@ -91,7 +91,9 @@ This transformation was performed to improve the clarity and interpretability of
 
 ## Feature Engineering 
 
-| Category             | Systolic (mmHg) | Diastolic (mmHg) |
+The feature engineering process begins with the blood pressure–related variables. While the `systolic_bp` and `diastolic_bp` columns are suitable for machine learning computations, end users are generally more familiar with descriptive medical terms such as ***Low Blood Pressure*** or ***Hypertension***. To improve interpretability, a new feature named `bp_category` was created to categorize blood pressure readings into clinically meaningful groups, according to guidelines provided by the American Heart Association (AHA). 
+
+| bp_category          | systolic_bp     | diastolic_bp     |
 | -------------------- | --------------- | ---------------- |
 | Low Blood Pressure   | < 90            | < 60             |
 | Normal               | 90–129          | 60–80            |
