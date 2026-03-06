@@ -101,6 +101,17 @@ The feature engineering process begins with the blood pressure–related variabl
 | Hypertension Stage 1 | 130–139         | 80–89            |
 | Hypertension Stage 2 | ≥ 140           | ≥ 90             | 
 
+A new categorical feature `bmi_group` was also created from the continuous `bmi` variable. Although BMI values are useful for numerical modeling, grouping them into clinically recognized categories improves interpretability during exploratory analysis, model explanation and deployment UI. The categorization follows the widely used World Health Organization (WHO) BMI classification standards. 
+
+| bmi_group    | BMI Range   |
+| ------------ | ----------- |
+| Underweight  | < 18.5      |
+| Normal       | 18.5 – 24.9 |
+| Overweight   | 25 – 29.9   |
+| Obese I      | 30 – 34.9   |
+| Obese II     | 35 – 39.9   |
+| Obese III    | ≥ 40        | 
+
 ## Exploratory Data Analysis 
 
 The original dataset contains 50+ columns, including several fields such as `person_id`, `claims_count`, `avg_claim_amount`, `proc-imaging_count` and `total_claims_paid`. These variables were excluded because they are either irrelevant for predictive modeling, act as identifiers, or represent post-outcome information that would not be available during real-world predictions. In addition, the variable `is_high_risk` was removed due to data leakage, as it directly reflects information closely related to the prediction target. To ensure meaningful analysis, the exploratory data analysis was conducted using cleaned and feature-engineered dataset (derived from the raw dataset). This allows the analysis to focus only on relevant demographic, socioeconomic, and risk-related features that are actually used by the machine learning models. 
