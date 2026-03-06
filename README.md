@@ -29,7 +29,7 @@
 ```bash
 Health Insurance Premium Prediction Project
 │
-├── Assets/                                  # Images for project documentation
+├── Assets/                                   # Images for project documentation
 ├── Dataset/                              
 │      ├── medical_insurance.csv      
 │      ├── medical-insurance_cleaned.csv                   
