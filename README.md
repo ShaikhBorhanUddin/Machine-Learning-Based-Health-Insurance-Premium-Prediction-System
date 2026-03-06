@@ -61,6 +61,14 @@ During the data cleaning stage, several columns were removed from the raw datase
 
 Several additional variables were removed because they represent historical insurance or claims information that application users would not realistically be able to provide. These include `policy_changes_last_2yrs`, `claims_count`, `avg_claim_amount`, and `total_claims_paid`. The column `chronic_count` was also dropped because it is simply an aggregate of ten individual disease indicator columns, making it redundant. Furthermore, the procedure-related variables `proc_imaging_count`, `proc_surgery_count`, `proc_physio_count`, `proc_consult_count`, and `proc_lab_count` were removed because they are vague and may represent medical procedures that are not appropriate or practical for machine learning prediction in this context. Finally, `is_high_risk` was excluded due to the potential for data leakage, as it likely reflects information closely related to the target variable. 
 
+The alcohol_freq column contains the unique values 
+
+```bash
+[NaN, 'Weekly', 'Daily', and 'Occasional']
+```
+
+A large portion of the entries (30,083 rows) had missing values. Since alcohol consumption is typically reported when applicable, it was reasonably assumed that these missing values represent individuals who do not consume alcohol. Therefore, the null values were imputed with the category 'Never' to indicate no alcohol consumption. 
+
 ## Feature Engineering 
 
 ## Exploratory Data Analysis 
