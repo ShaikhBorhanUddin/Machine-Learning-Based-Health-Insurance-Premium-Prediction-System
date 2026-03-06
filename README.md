@@ -27,20 +27,14 @@
 ## Folder Structure 
 
 ```bash
-House Price Prediction Project
+Health Insurance Premium Prediction Project
 │
 ├── Assets/                                  # Images for project documentation
 ├── Dataset/               
-│      ├── Raw/                  
-│      │     ├── nyc_property_sales.csv      # Not included in repository due to large size (364.5 MB)
-│      │     ├── PLUTO.csv                   # Not included in repository due to large size (292.1 MB)
-│      │     └── cpi_index.csv 
-│      ├── Cleaned/               
-│      │     ├── nyc_property_sales_cleaned.csv
-│      │     ├── PLUTO_cleaned.csv
-│      │     └── cpi_index_clean.csv
-│      └── Feature Engineered/
-│            └── sales_pluto_cpi_combined_engineered.csv
+│      │                 
+│      ├── nyc_property_sales.csv      
+│      ├── PLUTO.csv                   
+│      └── cpi_index.csv 
 ├── Models/
 │      ├── combined_location_mapping.pkl                       
 │      ├── feature_names.pkl
