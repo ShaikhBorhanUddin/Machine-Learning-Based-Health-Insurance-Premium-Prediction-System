@@ -112,6 +112,25 @@ A new categorical feature `bmi_group` was also created from the continuous `bmi`
 | Obese II     | 35 – 39.9   |
 | Obese III    | ≥ 40        | 
 
+An additional categorical variable `ldl_group` was created from the continuous `ldl` cholesterol measurements. While the original numeric values are informative for machine learning models, grouping them into clinically recognized ranges enhances interpretability and aligns the dataset with standard medical guidelines. 
+
+| ldl_group       | LDL Range (mg/dL) |
+| --------------- | ----------------- |
+| Optimal         | < 100             |
+| Near Optimal    | 100 – 129         |
+| Borderline High | 130 – 159         |
+| High            | 160 – 189         |
+| Very High       | ≥ 190             | 
+
+Similarly, `hba1c_group` was created from the continuous `HbA1c` measurements. While the numeric values are important for modeling, grouping them into clinically meaningful categories (such as normal, prediabetes, and diabetes) makes the data more interpretable for users who are familiar with these common clinical terms rather than the raw numeric scale. 
+
+| hba1c_group | HbA1c (%) |
+| ----------- | --------- |
+| Normal      | < 5.7     |
+| Prediabetes | 5.7 – 6.4 |
+| Diabetes    | ≥ 6.5     | 
+
+
 ## Exploratory Data Analysis 
 
 The original dataset contains 50+ columns, including several fields such as `person_id`, `claims_count`, `avg_claim_amount`, `proc-imaging_count` and `total_claims_paid`. These variables were excluded because they are either irrelevant for predictive modeling, act as identifiers, or represent post-outcome information that would not be available during real-world predictions. In addition, the variable `is_high_risk` was removed due to data leakage, as it directly reflects information closely related to the prediction target. To ensure meaningful analysis, the exploratory data analysis was conducted using cleaned and feature-engineered dataset (derived from the raw dataset). This allows the analysis to focus only on relevant demographic, socioeconomic, and risk-related features that are actually used by the machine learning models. 
