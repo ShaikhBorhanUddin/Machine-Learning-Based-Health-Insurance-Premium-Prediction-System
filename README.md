@@ -77,12 +77,18 @@ Among reported health conditions, hypertension is the most prevalent, followed b
 
 ![Dashboard](Assets/EDA_visits.png) 
 
+The distribution of doctor visits in the past year shows that most individuals have 0–3 visits, with the frequency declining steadily as the number of visits increases, indicating that frequent medical consultations are relatively uncommon. The hospitalizations over the last three years reveal that the vast majority of individuals have no hospital admissions, while only a small fraction experienced one or more hospitalizations. A similar pattern appears in the number of days hospitalized, where most individuals recorded zero days, and only a very small proportion stayed in the hospital for extended periods, suggesting generally low hospitalization intensity within the population. 
+
 <p align="center">
   <img src="Assets/EDA_annual_medical_cost.png" width="42.5%" />
   <img src="Assets/EDA_plan.png" width="56.5%" />
 </p> 
 
+The annual medical cost distribution shows that most individuals fall into the very low or low cost categories, with only a small number reaching medium or high cost levels, indicating that high healthcare expenditures are relatively rare. In terms of insurance plan types, the population is fairly balanced between Preferred Provider Organization (PPO) and Health Maintenance Organization (HMO) plans, while smaller shares belong to Exclusive Provider Organization (EPO) or Point-of-Service (POS) plans. The network tier distribution indicates that Silver plans are the most common, followed by Bronze, while Gold and Platinum plans represent smaller segments of the insured population. 
+
 ![Dashboard](Assets/EDA_premium_deductible_copay.png) 
+
+The final visualization set examines insurance pricing and cost-sharing structures. The annual premium distribution shows that most individuals pay lower premium amounts, particularly below $1000 annually, while higher premium categories are progressively less common. The deductible distribution suggests that moderate and low deductible plans dominate, with fewer individuals enrolled in high or very high deductible plans. Lastly, the copay distribution indicates that smaller copay amounts are most common, while higher copay levels appear less frequently, reflecting typical insurance plan designs that aim to balance affordability and cost sharing for policyholders. 
 
 ## Model Training 
 
