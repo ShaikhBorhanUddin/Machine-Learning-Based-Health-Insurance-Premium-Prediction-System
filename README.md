@@ -67,7 +67,7 @@ The alcohol_freq column contains the unique values
 [NaN, 'Weekly', 'Daily', 'Occasional']
 ```
 
-A large portion of the entries (30,083 rows) had missing values. Since alcohol consumption is typically reported when applicable, it was reasonably assumed that these missing values represent individuals who do not consume alcohol. Therefore, the null values were imputed with the category 'Never' to indicate no alcohol consumption. 
+A large portion of the entries (30,083 rows) had missing values. Since alcohol consumption is typically reported when applicable, it was reasonably assumed that these missing values represent individuals who do not consume alcohol. Therefore, the null values were imputed with the value `Never` to indicate no alcohol consumption. 
 
 ## Feature Engineering 
 
