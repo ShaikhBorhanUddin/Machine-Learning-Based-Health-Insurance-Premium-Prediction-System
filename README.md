@@ -57,6 +57,8 @@ Health Insurance Premium Prediction Project
 
 ## Project Workflow 
 
+The following diagram illustrates the end-to-end pipeline of the project, starting from raw data ingestion and preprocessing to feature engineering, model training, evaluation, and final deployment. 
+
 ![Dashboard](Assets/workflow_corrected.png) 
 
 ## Dataset 
