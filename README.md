@@ -52,6 +52,8 @@ Regional distribution shows that the South region has the highest representation
 
 ![Dashboard](Assets/EDA_financials.png) 
 
+Over half of the individuals are married (≈53%), while single individuals account for about 36%, and smaller proportions are divorced or widowed. Employment status shows that most individuals are employed (≈55%), with the remaining population distributed among retired, unemployed, and self-employed groups. Income distribution indicates that a large portion of individuals fall within the lower to middle income brackets, particularly below $50K, while relatively fewer individuals belong to higher income groups above $100K. 
+
 <p align="center">
   <img src="Assets/EDA_habits.png" width="40.2%" />
   <img src="Assets/EDA_diseases.png" width="58.8%" />
