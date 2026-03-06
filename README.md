@@ -35,23 +35,18 @@ Health Insurance Premium Prediction Project
 │      ├── medical-insurance_cleaned.csv                   
 │      └── medical_insurance_cleaned_engineered.csv 
 ├── Models/
-│      ├── combined_location_mapping.pkl                       
-│      ├── feature_names.pkl
-│      ├── location_coordinate_mapping.pkl
-│      ├── unique_categorical_values.pkl
+│      ├── lightgbm_model.pkl                       
+│      ├── xgboost_model_cpu.pkl                         # To ensure model is trained on cpu instead of gpu
 │      ├── xgboost_model.pkl
-│      ├── elastic_net_model.pkl
-│      └── rf_model.pkl                       # Not included in repository due to large size (3.66 GB)
+│      ├── elasticnet_model.pkl
+│      └── random_forest_model.pkl                       # Not included in repository due to large size (674 MB)
 ├── Notebooks/                                
-│      ├── property_sales_data_preprocessing.ipynb
-│      ├── PLUTO_data_preprocessing.ipynb
-│      ├── CPI_data_preprocessing.ipynb
-│      ├── EDA.ipynb
+│      ├── data_cleaning.ipynb
 │      ├── feature_engineering.ipynb
+│      ├── EDA.ipynb
+│      ├── train_test.ipynb
 │      ├── xgboost_train_test.ipynb
-│      ├── elasticnet_train_test.ipynb
-│      ├── rf_train_test.ipynb
-│      └── model_comparison.ipynb
+│      └── xgboost_SHAP.ipynb
 ├── app.py                                    # Deployment code
 ├── requirements.txt                          # Python dependencies for deployment
 ├── README.md                                 # Project documentation
