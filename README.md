@@ -32,7 +32,7 @@
 
 ## Dataset 
 
-[Dataset](https://www.kaggle.com/datasets/mohankrishnathalla/medical-insurance-cost-prediction) 
+The original [Raw Dataset](https://www.kaggle.com/datasets/mohankrishnathalla/medical-insurance-cost-prediction) contains more than 50 features, including identifiers, claim aggregates, and variables that may introduce data leakage. Related features are grouped into logical categories such as demographics, lifestyle factors, medical conditions, procedures, and claim history to make the analysis more interpretable and concise. 
 
 | Feature Group            | Column Names                                                                                                                                              | Category              | Data Type Category      | Description                                                                                              |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------- |
