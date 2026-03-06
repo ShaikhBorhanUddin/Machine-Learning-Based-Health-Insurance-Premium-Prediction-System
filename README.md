@@ -64,7 +64,7 @@ Several additional variables were removed because they represent historical insu
 The alcohol_freq column contains the unique values 
 
 ```bash
-[NaN, 'Weekly', 'Daily', and 'Occasional']
+[NaN, 'Weekly', 'Daily', 'Occasional']
 ```
 
 A large portion of the entries (30,083 rows) had missing values. Since alcohol consumption is typically reported when applicable, it was reasonably assumed that these missing values represent individuals who do not consume alcohol. Therefore, the null values were imputed with the category 'Never' to indicate no alcohol consumption. 
