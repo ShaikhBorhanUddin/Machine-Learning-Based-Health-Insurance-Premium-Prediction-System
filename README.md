@@ -36,10 +36,10 @@ Health Insurance Premium Prediction Project
 │      └── medical_insurance_cleaned_engineered.csv 
 ├── Models/
 │      ├── lightgbm_model.pkl                       
-│      ├── xgboost_model_cpu.pkl                         # To ensure model is trained on cpu instead of gpu
+│      ├── xgboost_model_cpu.pkl              # To ensure model is trained on cpu instead of gpu
 │      ├── xgboost_model.pkl
 │      ├── elasticnet_model.pkl
-│      └── random_forest_model.pkl                       # Excluded from repository due to large size (674 MB)
+│      └── random_forest_model.pkl            # Excluded from repository due to large size (674 MB)
 ├── Notebooks/                                
 │      ├── data_cleaning.ipynb
 │      ├── feature_engineering.ipynb
