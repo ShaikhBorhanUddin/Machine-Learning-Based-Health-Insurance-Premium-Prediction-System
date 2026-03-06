@@ -69,6 +69,18 @@ The alcohol_freq column contains the unique values
 
 A large portion of the entries (30,083 rows) had missing values. Since alcohol consumption is typically reported when applicable, it was reasonably assumed that these missing values represent individuals who do not consume alcohol. Therefore, the null values were imputed with the value `Never` to indicate no alcohol consumption. 
 
+The education column contains the unique values 
+
+```bash
+['Doctorate', 'No HS', 'HS', 'Some College', 'Masters','Bachelors']
+```
+
+Some of these categories ('No HS', 'HS', and 'Some College') were abbreviated and somewhat unclear in meaning. To improve clarity and interpretability, these values were remapped to more descriptive labels, while the remaining categories were kept unchanged. This mapping enhances the readability and consistency of the education-level information in the dataset. 
+
+```bash
+{'No HS': 'High School Dropout', 'HS': 'High School', 'Some College': 'College'}
+```
+
 ## Feature Engineering 
 
 ## Exploratory Data Analysis 
