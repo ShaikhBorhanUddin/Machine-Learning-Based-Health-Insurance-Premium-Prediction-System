@@ -44,6 +44,8 @@ The original dataset contains 50+ columns, including several fields such as `per
 
 ![Dashboard](Assets/EDA_demographics.png) 
 
+The EDA begins with an examination of the demographic characteristics of insurance holders in the dataset. The age distribution shows that the majority of individuals fall within the range of 31 to 60 (the 46–60 group being the largest), indicating that middle-aged individuals dominate the dataset. Gender distribution is nearly balanced, with female (≈49.2%) and male (≈48.8%) populations being almost equal, while a very small fraction falls under the "Other" category. Household size analysis reveals that smaller households (homes with 2–3 rooms) are more common, while larger households (6 or more rooms) appear much less frequently. 
+
 ![Dashboard](Assets/EDA_location.png) 
 
 ![Dashboard](Assets/EDA_financials.png) 
