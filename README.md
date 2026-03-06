@@ -130,6 +130,15 @@ Similarly, `hba1c_group` was created from the continuous `HbA1c` measurements. W
 | Prediabetes | 5.7 – 6.4 |
 | Diabetes    | ≥ 6.5     | 
 
+finally, `annual_medical_cost_grouped` was created from the continuous `annual_premium` values. While the numeric premium amounts are useful for modeling, grouping them into meaningful categories improves interpretability and helps users quickly understand cost levels. 
+
+| annual_medical_cost_grouped| Annual Premium Range ($) |
+| -------------------------- | ------------------------ |
+| Very Low                   | 0 – 499                  |
+| Low                        | 500 – 1,999              |
+| Medium                     | 2,000 – 4,999            |
+| High                       | 5,000 – 9,999            |
+| Very High                  | 10,000+                  | 
 
 ## Exploratory Data Analysis 
 
