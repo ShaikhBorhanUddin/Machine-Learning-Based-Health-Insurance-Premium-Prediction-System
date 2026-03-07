@@ -240,12 +240,18 @@ Four regression models were trained and evaluated: **XGBoost**, **Random Forest*
 
 ## Results 
 
+After training, the models were evaluated on the test dataset using four common regression metrics: Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and R² Score. Lower values of MAE, MSE, and RMSE indicate better prediction accuracy, while a higher R² score indicates stronger explanatory power of the model. 
+
 ![Dashboard](Assets/performance_matrix.png) 
+
+The performance comparison shows that Random Forest achieved the best overall results with the lowest error values and the highest R² score, indicating the most accurate predictions for annual insurance premiums. LightGBM also performed strongly and produced results close to Random Forest. XGBoost showed solid performance but slightly higher error values. In contrast, ElasticNet performed noticeably worse compared to the tree-based ensemble models, likely because linear models struggle to capture the complex nonlinear relationships present in the dataset. 
 
 <p align="center">
   <img src="Assets/actual_predicted_comparison.png" width="61.7%" />
   <img src="Assets/model_performance_visualization.png" width="37.3%" />
 </p> 
+
+The bar charts above compare the performance of all four models across these metrics. Random Forest clearly achieves the best results with the lowest MAE, MSE, and RMSE, along with the highest R² score (≈0.99), indicating very accurate predictions. LightGBM and XGBoost also perform well, producing relatively low error values and high R² scores (around 0.96). In contrast, ElasticNet shows significantly higher error values and a lower R² score, suggesting that the linear nature of ElasticNet limits its ability to capture the more complex relationships present in the dataset. The scatter plot further visualizes prediction quality by comparing actual premiums with predicted premiums. The red diagonal line represents the ideal prediction line, where predicted values perfectly match actual values. Predictions that fall closer to this line indicate higher accuracy. The scatter points show that Random Forest and LightGBM predictions cluster tightly around the ideal line, demonstrating strong predictive performance. XGBoost points are also reasonably close to the line but with slightly greater variation. ElasticNet predictions deviate more from the ideal line, confirming the weaker performance observed in the bar chart metrics. 
 
 ## Practical Applications 
 
