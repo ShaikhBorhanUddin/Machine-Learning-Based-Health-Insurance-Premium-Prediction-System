@@ -56,9 +56,9 @@ def get_bp_category(systolic_bp, diastolic_bp):
 
 def bp_category_color(bp_category):
     return {
-        "Low Blood Pressure": "#bbdefb",        # light blue
+        "Low Blood Pressure": "#fff9c4",        # yellow
         "Normal": "#c8e6c9",                    # green
-        "Elevated": "#fff9c4",                  # yellow
+        "Elevated": "#fff9c4",                  # yellow again
         "Hypertension Stage 1": "#ffcc80",      # orange
         "Hypertension Stage 2": "#ef9a9a"       # red
     }.get(str(bp_category), "#e0e0e0")
@@ -468,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
