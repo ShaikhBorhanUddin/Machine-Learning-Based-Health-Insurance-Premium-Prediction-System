@@ -284,9 +284,13 @@ The developed Health Insurance Premium Prediction System has several practical a
 
 Despite achieving reasonable predictive performance, the project has several limitations related to data characteristics, model constraints, deployment environment, and explainability. These factors should be considered when interpreting the results of the premium estimation system. 
 
-###Feature Bias 
+### Feature Bias 
 
 The target variable `annual_premium` shows a very strong correlation with `annual_medical_cost`, which tends to dominate the model’s decision-making process. As a result, other relevant features such as network_tier, income, blood pressure, blood sugar (HbA1c), employment status, and age have comparatively lower influence on the prediction. A feature importance bar chart is included below to illustrate this imbalance. 
+
+<p align="center">
+  <img src="Assets/SHAP_feature_importance.png" width="60%" />
+</p> 
 
 ![Dashboard](Assets/SHAP_feature_importance.png) 
 
