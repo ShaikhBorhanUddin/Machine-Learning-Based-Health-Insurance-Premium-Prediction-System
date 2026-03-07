@@ -270,6 +270,16 @@ https://health-insurance-premium-prediction-system.streamlit.app/
   <img src="Assets/deployment_down.png" width="50%" />
 </p> 
 
+## Practical Applications 
+
+The developed Health Insurance Premium Prediction System has several practical applications in the insurance and healthcare analytics domain. 
+
+- By estimating an individual's expected insurance premium based on demographic, lifestyle, and medical attributes, the system can assist insurance providers in making data-driven pricing decisions and improving transparency in premium calculation. It can also serve as a decision-support tool during the underwriting process, helping insurers quickly evaluate common risk-related factors such as age, BMI, smoking status, chronic diseases, and healthcare utilization patterns. 
+
+- From a customer perspective, the system can function as an interactive premium estimation tool, allowing users to input their personal and health-related information to obtain an estimated annual premium. This improves transparency and helps individuals better understand how different factors (such as smoking habits, BMI category, or existing medical conditions) may influence their insurance costs. Such tools are commonly used in online insurance platforms (such as AdInsure or Bitrix24) to provide quick quotes before policy purchase. 
+
+- Beyond direct pricing estimation, the model can also support risk analysis and policy planning. Insurance companies can use similar predictive systems to analyze population-level risk patterns, design targeted insurance plans, and optimize policy structures such as deductible levels, copay options, and network tiers. Additionally, healthcare analytics teams can use insights from the model to identify key drivers of healthcare costs, which may support preventive healthcare initiatives and cost management strategies. 
+
 ## Limitations 
 
 ![Dashboard](Assets/SHAP_feature_importance.png) 
