@@ -288,11 +288,9 @@ Despite achieving reasonable predictive performance, the project has several lim
 
 The target variable `annual_premium` shows a very strong correlation with `annual_medical_cost`, which tends to dominate the model’s decision-making process. As a result, other relevant features such as network_tier, income, blood pressure, blood sugar (HbA1c), employment status, and age have comparatively lower influence on the prediction. A feature importance bar chart is included below to illustrate this imbalance. 
 
-<p align="center">
-  <img src="Assets/SHAP_feature_importance.png" width="60%" />
+<p align="left">
+  <img src="Assets/SHAP_feature_importance.png" width="55%" />
 </p> 
-
-![Dashboard](Assets/SHAP_feature_importance.png) 
 
 This feature dominance may introduce bias and reduce the model’s ability to generalize well for unseen policyholders, particularly for individuals without prior medical cost history. 
 
