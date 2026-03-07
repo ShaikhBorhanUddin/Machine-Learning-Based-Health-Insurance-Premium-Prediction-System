@@ -227,6 +227,9 @@ The final visualization set examines insurance pricing and cost-sharing structur
 
 ## Model Training 
 
+The cleaned and feature-engineered dataset was used for model training, with `annual_premium` defined as the target variable. The data was split into training and testing sets using an 80–20 ratio with a fixed **random_state=42** to ensure reproducibility. Categorical variables were transformed using One-Hot Encoding, while numerical features were used directly for most models. Since ElasticNet is sensitive to feature scale, numerical features were standardized using StandardScaler within a pipeline. 
+
+Four regression models were trained and evaluated: **XGBoost**, **Random Forest**, **ElasticNet**, and **LightGBM**. Tree-based models (XGBoost, Random Forest, LightGBM) used the encoded features directly, while ElasticNet used a pipeline combining scaling and regression. Model performance was assessed using **MAE**, **MSE**, **RMSE**, and **R²** Score to compare prediction accuracy across models. To avoid compatibility issues during application deployment, the XGBoost model was retrained separately on **CPU in a Google Colab environment**, ensuring stable inference in environments where GPU dependencies may not be available.
 ## Results 
 
 ![Dashboard](Assets/performance_matrix.png) 
