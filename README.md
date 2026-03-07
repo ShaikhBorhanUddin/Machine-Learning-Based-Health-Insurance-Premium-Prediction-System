@@ -294,6 +294,18 @@ The target variable `annual_premium` shows a very strong correlation with `annua
 
 This feature dominance may introduce bias and reduce the model’s ability to generalize well for unseen policyholders, particularly for individuals without prior medical cost history. 
 
+### Model Size Constraints 
+
+Ensemble models such as Random Forest produced the most competitive predictive performance during experimentation. However, the trained model resulted in a large serialized file (~674 MB), making it impractical for lightweight deployment environments such as Streamlit Cloud due to memory and storage limitations. 
+
+### Platform Trade-off 
+
+A Flask-based web application using HTML and CSS was initially explored to enable greater UI/UX customization compared to Streamlit. However, deployment on Render experienced high cold-start latency and slow initial response times, which negatively impacted user experience. As a result, this deployment approach was postponed. To ensure faster interaction and smoother deployment, the application was ultimately deployed using Streamlit. While this allowed for easier integration of the machine learning model and faster loading times, it also introduced limitations in frontend customization compared to a full Flask-based interface. Additionally, the application relies on free-tier cloud infrastructure, which imposes constraints on memory usage, CPU resources and concurrent user handling. 
+
+### SHAP Visualization Limitation 
+
+Explainability using SHAP (SHapley Additive exPlanations) was explored to provide insight into how individual features influence predictions. However, Streamlit cannot directly render the interactive SHAP force plot due to its JavaScript dependencies. As a result, fully interactive explainability visualizations were not implemented in the deployed web application. 
+
 ## Tools Used 
 
 ## Licence 
