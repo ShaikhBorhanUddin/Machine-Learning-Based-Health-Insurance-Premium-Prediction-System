@@ -5,6 +5,8 @@ import numpy as np
 import shap
 import streamlit.components.v1 as components
 
+explainer = shap.TreeExplainer(model)
+
 # Load the trained model
 
 try:
@@ -121,8 +123,6 @@ def deductible_category_color(deductible_category):
         "High": "#ffcc80",      # orange
         "Too High": "#ef9a9a"   # red
     }.get(str(deductible_category), "#e0e0e0")
-
-explainer = shap.Explainer(model)
 
 st.header("🩺 Personal & Health Details")
 
@@ -487,6 +487,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
