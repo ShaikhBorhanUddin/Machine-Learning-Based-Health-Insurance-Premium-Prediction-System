@@ -255,9 +255,11 @@ The grouped bar chart compares the actual annual premiums with the predicted pre
 
 ## Explainability 
 
+The model’s predictions are interpreted using SHAP (SHapley Additive exPlanations), which explains how each feature contributes to the final prediction. 
+
 ![Dashboard](Assets/SHAP_explanation.png) 
 
-The SHAP force plot shows how the model arrived at a predicted annual premium of 1,022. Starting from the base value (average premium) of 581.9, the prediction was primarily increased by the individuals high annual medical cost (6,789), which the model identifies as a strong risk factor. The selected insurance plan tier also contributed to the increase, as non-Bronze plans tend to have higher premiums. This increase was partially offset by being enrolled in a Silver plan rather than a higher-tier option. Overall, the plot provides a transparent breakdown of how each feature contributed to the final prediction. 
+The force plot above shows how the model arrived at a predicted annual premium of 1,022. The prediction starts from the base value (average premium) of 581.9, and each feature either increases or decreases the final output. In this example, the prediction is primarily driven upward by the individual's high annual medical cost (6,789), which the model identifies as a strong risk factor. The insurance network tier also contributes to the increase, as plans above the Bronze tier typically have higher premiums. This effect is partially offset by the individual being enrolled in a Silver plan, which has a lower premium compared to higher-tier options. 
 
 ## Deployment 
 
