@@ -296,7 +296,7 @@ This feature dominance may introduce bias and reduce the model’s ability to ge
 
 ### Model Size Constraints 
 
-Ensemble models such as Random Forest produced the most competitive predictive performance during experimentation. However, the trained model resulted in a large serialized file (~674 MB), making it impractical for lightweight deployment environments such as Streamlit Cloud due to memory and storage limitations. 
+Ensemble models such as Random Forest produced the most competitive predictive performance during testing. However, the trained model resulted in a large pickle file (~674 MB), making it impractical for lightweight deployment environments such as Streamlit Cloud due to memory and storage limitations. 
 
 ### Platform Trade-off 
 
