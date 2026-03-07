@@ -231,14 +231,12 @@ The cleaned and feature-engineered dataset was used for model training, with `an
 
 Four regression models were trained and evaluated: **XGBoost**, **Random Forest**, **ElasticNet**, and **LightGBM**. Tree-based models (XGBoost, Random Forest, LightGBM) used the encoded features directly, while ElasticNet used a pipeline combining scaling and regression. Model performance was assessed using **MAE**, **MSE**, **RMSE**, and **R²** Score to compare prediction accuracy across models. To avoid compatibility issues during application deployment, the XGBoost model was retrained separately on **CPU in a Google Colab environment**, ensuring stable inference in environments where GPU dependencies may not be available. 
 
-```bash
 | Model Name    | Implementation                          | Key Parameters Used                                                                               | Training Time |
 | ------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------- |
 | XGBoost       | `xgb.XGBRegressor`                      | `objective='reg:squarederror', n_estimators=100, learning_rate=0.1, max_depth=5, random_state=42` | ~5 Seconds    |
 | ElasticNet    | `Pipeline(StandardScaler → ElasticNet)` | `random_state=42`                                                                                 | ~5 Seconds    |
-| Random Forest | `RandomForestRegressor`                 | `n_estimators=100, random_state=42, n_jobs=-1`                                                    | ~22 Minutes   |
+| Random Forest | `RandomForestRegressor`                 | `n_estimators=100, random_state=42, n_jobs=-1`                                                    | ~2 Minutes    |
 | LightGBM      | `lgb.LGBMRegressor`                     | `n_estimators=100, learning_rate=0.1, random_state=42`                                            | ~6 Seconds    |
-```
 
 ## Results 
 
