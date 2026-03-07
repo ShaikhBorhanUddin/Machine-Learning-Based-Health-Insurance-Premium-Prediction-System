@@ -5,8 +5,6 @@ import numpy as np
 import shap
 import streamlit.components.v1 as components
 
-explainer = shap.TreeExplainer(model)
-
 # Load the trained model
 
 try:
@@ -14,6 +12,13 @@ try:
 except FileNotFoundError:
     st.error("Model file 'xgboost_model_cpu.pkl' not found. Please ensure it's in the same directory as app.py.")
     st.stop()
+
+# Create SHAP explainer AFTER model loads
+@st.cache_resource
+def load_explainer(model):
+    return shap.TreeExplainer(model)
+
+explainer = load_explainer(model)
 
 st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="wide")
 st.title("🏥 Medical Insurance Premium Prediction")
@@ -471,7 +476,7 @@ if st.button("Predict Annual Premium", type="primary"):
         # ---- SHAP EXPLANATION ----
         st.subheader("🔎 Model Explanation")
     
-        shap_values = explainer(input_data)
+        shap_values = explainer.shap_values(input_data)
     
         shap_html = shap.plots.force(
             shap_values[0],
@@ -487,6 +492,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
