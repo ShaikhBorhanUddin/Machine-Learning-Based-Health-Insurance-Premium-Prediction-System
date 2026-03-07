@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import shap
+import streamlit.components.v1 as components
 
 # Load the trained model
 
@@ -119,7 +121,9 @@ def deductible_category_color(deductible_category):
         "High": "#ffcc80",      # orange
         "Too High": "#ef9a9a"   # red
     }.get(str(deductible_category), "#e0e0e0")
-    
+
+explainer = shap.Explainer(model)
+
 st.header("🩺 Personal & Health Details")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -463,11 +467,27 @@ if st.button("Predict Annual Premium", type="primary"):
     try:
         prediction = model.predict(input_data)[0]
         st.success(f"Predicted Annual Premium: **${prediction:.2f}**")
+    
+        # ---- SHAP EXPLANATION ----
+        st.subheader("🔎 Model Explanation")
+    
+        shap_values = explainer(input_data)
+    
+        shap_html = shap.plots.force(
+            shap_values[0],
+            matplotlib=False
+        )
+
+        shap_html = f"<head>{shap.getjs()}</head><body>{shap_html.html()}</body>"
+    
+        components.html(shap_html, height=300)
+
     except Exception as e:
         st.error(f"An error occurred during prediction: {e}")
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
