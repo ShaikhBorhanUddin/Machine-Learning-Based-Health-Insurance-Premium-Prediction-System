@@ -300,7 +300,7 @@ Ensemble models such as Random Forest produced the most competitive predictive p
 
 ### Platform Trade-off 
 
-A Flask-based web application using HTML and CSS was initially explored to enable greater UI/UX customization compared to Streamlit. However, deployment on Render experienced high cold-start latency and slow initial response times, which negatively impacted user experience. As a result, this deployment approach was postponed. To ensure faster interaction and smoother deployment, the application was ultimately deployed using Streamlit. While this allowed for easier integration of the machine learning model and faster loading times, it also introduced limitations in frontend customization compared to a full Flask-based interface. Additionally, the application relies on free-tier cloud infrastructure, which imposes constraints on memory usage, CPU resources and concurrent user handling. 
+A **Flask-based** web application using HTML and CSS was initially explored to enable greater UI/UX customization compared to Streamlit. However, deployment on **Render** experienced high cold-start latency and slow initial response times, which negatively impacted user experience. As a result, this deployment approach was postponed. To ensure faster interaction and smoother deployment, the application was ultimately deployed using **Streamlit**. While this allowed for easier integration of the machine learning model and faster loading times, it also introduced limitations in frontend customization compared to a full Flask-based interface. Additionally, the application relies on free-tier cloud infrastructure, which imposes constraints on memory usage, CPU resources and concurrent user handling. 
 
 ### SHAP Visualization Limitation 
 
