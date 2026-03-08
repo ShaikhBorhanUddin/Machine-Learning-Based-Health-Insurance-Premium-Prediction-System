@@ -265,8 +265,8 @@ The force plot above shows how the model arrived at a predicted annual premium o
 
 The application is deployed as an interactive web app using Streamlit.
 
-🔗 Live App: 
-https://health-insurance-premium-prediction-system.streamlit.app/
+🔗 Live App:
+https://health-insurance-premium-prediction-system.streamlit.app/ 
 
 The web interface allows users to input policyholder details and receive a predicted annual health insurance premium based on the trained XGBoost regression model. 
 
