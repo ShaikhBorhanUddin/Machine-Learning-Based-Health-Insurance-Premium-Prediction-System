@@ -40,7 +40,7 @@ Health Insurance Premium Prediction Project
 ├── Assets/                                   # Images for project documentation
 ├── Dataset/                              
 │      ├── medical_insurance.csv      
-│      ├── medical-insurance_cleaned.csv                   
+│      ├── medical_insurance_cleaned.csv                   
 │      └── medical_insurance_cleaned_engineered.csv 
 ├── Models/
 │      ├── lightgbm_model.pkl                       
