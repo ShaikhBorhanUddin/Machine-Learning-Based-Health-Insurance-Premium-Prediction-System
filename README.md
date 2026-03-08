@@ -24,6 +24,12 @@
 
 ## Overview 
 
+Health insurance premiums are influenced by a combination of personal characteristics, health conditions, lifestyle factors, and policy details. Accurately estimating premiums based on these variables can help insurers perform better risk assessment while also improving transparency for policyholders. This project presents a machine learning–based health insurance premium prediction system that estimates the expected annual premium based on user-provided information. The model was trained using demographic, health, lifestyle, and insurance-related features to capture patterns that influence premium pricing. An interactive web application was also developed using Streamlit, allowing users to input relevant details and receive real-time premium predictions. The deployed application can be accessed here: 
+
+🔗 https://health-insurance-premium-prediction-system.streamlit.app/ 
+
+This project demonstrates an end-to-end data science workflow, including data preprocessing, exploratory analysis, feature engineering, model training, evaluation, and deployment as an accessible web application. 
+
 ## Folder Structure 
 
 All code, Python notebooks, trained models, and images used in this project are organized and stored in this repository according to the following folder structure: 
