@@ -276,7 +276,23 @@ The web interface allows users to input policyholder details and receive a predi
 
 All categorical and numerical features used during model training were included as input fields in the web application to ensure consistency between training and inference. Several auto-generated and color-coded informational fields were added to improve user understanding of their health profile. These fields are derived from user inputs but are not used by the model for prediction. These fields are `Age Category`, `BMI Category`, `Blood Pressure Category`, `LDL Cholesterol Category`, `HbA1c Category`, `Annual Medical Cost Category` and  `Deductible Level`. These indicators provide users with contextual feedback about their health and policy parameters without influencing the model output. 
 
-During data preprocessing, abbreviated plan types were replaced with their full forms (e.g., PPO → Preferred Provider Organization). However, these full terms may still be unfamiliar to many users. To improve understanding, an auto-generated `Plan Type Explanation` field was included in the interface to briefly describe the selected insurance plan type.
+During data preprocessing, abbreviated plan types were replaced with their full forms (e.g., PPO → Preferred Provider Organization). However, these full terms may still be unfamiliar to many users. To improve understanding, an auto-generated `Plan Type Explanation` field was included in the interface to briefly describe the selected insurance plan type. 
+
+To prevent unrealistic or inconsistent user inputs, several validation mechanisms were implemented. To filter out unrealistic blood pressure entries (e.g., `120/120` or `70/100`), the following rule was enforced: 
+
+```bash
+systolic_bp ≥ diastolic_bp + 10
+```
+
+As a result the maximum allowable diastolic blood pressure value is dynamically adjusted based on the selected systolic value. This prevents physiologically invalid combinations from being entered. 
+
+Certain medical indicators correspond directly to input fields used by the model: 
+
+- Blood pressure values → Hypertension indicator
+
+- Blood sugar values → Diabetes indicator
+
+To prevent contradictory inputs (for example: `150/130` BP but selecting `Hypertension = No`), tooltips were added to guide users when filling out the Hypertension and Diabetes fields.
 
 ## Practical Applications 
 
