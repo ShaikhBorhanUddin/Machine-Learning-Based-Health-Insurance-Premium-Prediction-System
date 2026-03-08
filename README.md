@@ -274,6 +274,10 @@ The web interface allows users to input policyholder details and receive a predi
   <img src="Assets/deployment_down.png" width="50%" />
 </p> 
 
+All categorical and numerical features used during model training were included as input fields in the web application to ensure consistency between training and inference. Several auto-generated and color-coded informational fields were added to improve user understanding of their health profile. These fields are derived from user inputs but are not used by the model for prediction. These fields are `Age Category`, `BMI Category`, `Blood Pressure Category`, `LDL Cholesterol Category`, `HbA1c Category`, `Annual Medical Cost Category` and  `Deductible Level`. These indicators provide users with contextual feedback about their health and policy parameters without influencing the model output. 
+
+During data preprocessing, abbreviated plan types were replaced with their full forms (e.g., PPO → Preferred Provider Organization). However, these full terms may still be unfamiliar to many users. To improve understanding, an auto-generated `Plan Type Explanation` field was included in the interface to briefly describe the selected insurance plan type.
+
 ## Practical Applications 
 
 The developed Health Insurance Premium Prediction System has several practical applications in the insurance and healthcare analytics domain. 
