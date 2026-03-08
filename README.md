@@ -288,6 +288,8 @@ As a result the maximum allowable diastolic blood pressure value is dynamically 
 
 Certain medical indicators correspond directly to input fields used by the model: Blood pressure values → Hypertension indicator and  Blood sugar values → Diabetes indicator. To prevent contradictory inputs (for example: `150/130` BP but selecting `Hypertension = No`), tooltips were added to guide users when filling out the `Hypertension` and `Diabetes` fields. Insurance-related financial parameters such as `Deductible` and `Copay` may not be familiar to many users. To reduce confusion and prevent arbitrary inputs, tooltips were also added explaining these terms directly within the interface. This helps users provide more realistic inputs when exploring premium predictions. 
 
+With the deployment architecture established, the next section outlines the potential practical applications of the health insurance premium prediction system. 
+
 ## Practical Applications 
 
 The developed Health Insurance Premium Prediction System has several practical applications in the insurance and healthcare analytics domain. 
