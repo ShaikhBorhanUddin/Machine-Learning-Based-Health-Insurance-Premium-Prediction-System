@@ -286,13 +286,7 @@ systolic_bp ≥ diastolic_bp + 10
 
 As a result the maximum allowable diastolic blood pressure value is dynamically adjusted based on the selected systolic value. This prevents physiologically invalid combinations from being entered. 
 
-Certain medical indicators correspond directly to input fields used by the model: 
-
-- Blood pressure values → Hypertension indicator
-
-- Blood sugar values → Diabetes indicator
-
-To prevent contradictory inputs (for example: `150/130` BP but selecting `Hypertension = No`), tooltips were added to guide users when filling out the Hypertension and Diabetes fields.
+Certain medical indicators correspond directly to input fields used by the model: Blood pressure values → Hypertension indicator and  Blood sugar values → Diabetes indicator. To prevent contradictory inputs (for example: `150/130` BP but selecting `Hypertension = No`), tooltips were added to guide users when filling out the `Hypertension` and `Diabetes` fields. Insurance-related financial parameters such as `Deductible` and `Copay` may not be familiar to many users. To reduce confusion and prevent arbitrary inputs, tooltips were also added explaining these terms directly within the interface. This helps users provide more realistic inputs when exploring premium predictions. 
 
 ## Practical Applications 
 
