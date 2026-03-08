@@ -328,6 +328,8 @@ Explainability using SHAP (SHapley Additive exPlanations) was explored to provid
 
 ## Tools Used 
 
+The development, analysis, and deployment of this project were supported by several tools and libraries across data processing, machine learning, visualization, documentation and web application development. 
+
 - `Python` – Core programming language used for data processing, model development, and deployment. 
 
 - `Jupyter Notebook` – Used for exploratory data analysis, data preprocessing, and model experimentation. 
