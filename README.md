@@ -328,6 +328,32 @@ Explainability using SHAP (SHapley Additive exPlanations) was explored to provid
 
 ## Tools Used 
 
+- `Python` – Core programming language used for data processing, model development, and deployment. 
+
+- `Jupyter Notebook` – Used for exploratory data analysis, data preprocessing, and model experimentation. 
+
+-`Pandas` – Data cleaning, transformation, and dataset manipulation. 
+
+-`NumPy` – Numerical operations and array handling. 
+
+-`Matplotlib` – Static visualizations for exploratory analysis and feature importance charts. 
+
+-`Seaborn` – Statistical data visualizations during exploratory data analysis. 
+
+-`Scikit-learn` – Data preprocessing, train-test splitting, and model evaluation. 
+
+-`XGBoost` – Final regression model used for health insurance premium prediction. 
+
+-`SHAP` – Used to analyze feature importance and model behavior during experimentation. 
+
+-`Streamlit` – Used to build and deploy the interactive web application interface. 
+
+-`Streamlit Community Cloud` – Hosting platform used to deploy and share the web application online. 
+
+-`Git` – Version control for project development. 
+
+-`GitHub` – Repository hosting, documentation, and project sharing. 
+
 ## Licence 
 
 ## Contact 
