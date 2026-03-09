@@ -3,11 +3,6 @@ import pandas as pd
 import joblib
 import numpy as np
 
-# Load CSS
-def load_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
 # Load the trained model
 
 try:
@@ -17,7 +12,6 @@ except FileNotFoundError:
     st.stop()
 
 st.set_page_config(page_title="Medical Insurance Premium Predictor", layout="wide")
-load_css("style.css")
 st.title("🏥 Medical Insurance Premium Prediction")
 st.markdown("Enter the details below to predict the annual medical insurance premium.")
 
@@ -474,6 +468,7 @@ if st.button("Predict Annual Premium", type="primary"):
 
 st.markdown("---")
 st.markdown("Developed by Shaikh Borhan Uddin")
+
 
 
 
