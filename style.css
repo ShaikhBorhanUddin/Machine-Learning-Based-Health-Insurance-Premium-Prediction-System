@@ -1,0 +1,27 @@
+/* Background image */
+.stApp {
+    background-image: url("https://images.unsplash.com/photo-1576091160550-2173dba999ef");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Glass panel container */
+.main .block-container{
+    background: rgba(255,255,255,0.88);
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #1f4e79;
+}
+
+/* Buttons */
+.stButton>button {
+    border-radius: 10px;
+    height: 3em;
+    font-weight: 600;
+}
